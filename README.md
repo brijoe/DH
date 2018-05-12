@@ -8,9 +8,9 @@ The library provides you with a quick access portal, you can shake your phone  t
 **Notice:** 
 you must use OKHttp library to perform network request,because the DH libary depends on OkHttp Interceptor.
 
-<img src="images/Screenshot_1.jpg" width="200" />
-<img src="images/Screenshot_2.jpg" width="200" />
-<img src="images/Screenshot_3.jpg" width="200" />
+<img src="images/Screenshot_1.jpg" style="width:180px;height:320px" />
+<img src="images/Screenshot_2.jpg" style="width:180px;height:320px" />
+<img src="images/Screenshot_3.jpg" style="width:180px;height:320px" />
 
 ## Getting started
 
