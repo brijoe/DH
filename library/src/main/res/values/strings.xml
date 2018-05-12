@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DH</string>
+    <string name="share_info">点击分享</string>
+    <string name="copy_success">拷贝成功</string>
+    <string name="copy_fail">拷贝失败</string>
+</resources>
