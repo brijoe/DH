@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/brijoe/DH.svg)](https://jitpack.io/#brijoe/DH)
 
-#DH 
+# DH 
 
 A development tools library for Android. 
 The library provides you with a quick access portal, you can shake your phone  to show debugging dialog at any time .Even you can watch the app's network log directly.
@@ -12,7 +12,7 @@ you must use OKHttp library to perform network request,because the DH libary dep
 <img src="images/Screenshot_2.jpg" width="200" />
 <img src="images/Screenshot_3.jpg" width="200" />
 
-##Getting started
+## Getting started
 
 
 Add it in your root build.gradle at the end of repositories:
@@ -83,7 +83,7 @@ you can also add your menu item to the dialag if you are not satisfied with it.
 
 ```
 
-##License
+## License
 ```
 Copyright 2015 Square, Inc.
 Licensed under the Apache License, Version 2.0 (the "License");
