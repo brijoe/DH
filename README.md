@@ -9,7 +9,7 @@ A development tools library for Android.
 The library provides you with a quick access portal, you can shake your phone  to show debugging dialog at any time .Even you can watch the app's network log directly.
 
 **Notice:** 
-you must use OKHttp library to perform network request,because the DH libary depends on OkHttp Interceptor.
+You must use OKHttp library to perform network request,because the DH libary depends on OkHttp Interceptor.
 
 <img src="images/Screenshot.png" width="750" />
 
@@ -72,7 +72,7 @@ Now shake your phone，and the dialog will show up.
 
 ## Customize 
 
-you can also add your menu item to the dialag if you are not satisfied with it.
+You can also add your menu item to the dialog if you are not satisfied with it.
 
 
 ```
