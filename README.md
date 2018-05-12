@@ -1,4 +1,7 @@
 [![](https://jitpack.io/v/brijoe/DH.svg)](https://jitpack.io/#brijoe/DH)
+[![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels)
+[![Gradle Version](https://img.shields.io/badge/gradle-2.10%2B-green.svg)](https://docs.gradle.org/current/release-notes)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 # DH 
 
@@ -8,14 +11,8 @@ The library provides you with a quick access portal, you can shake your phone  t
 **Notice:** 
 you must use OKHttp library to perform network request,because the DH libary depends on OkHttp Interceptor.
 
-<img src="images/Screenshot_1.jpg" style="width:180px;height:320px" />
-<img src="images/Screenshot_2.jpg" style="width:180px;height:320px" />
-<img src="images/Screenshot_3.jpg" style="width:180px;height:320px" />
+<img src="images/Screenshot.png" width="750" />
 
-
-![](images/Screenshot_1.jpg){:height="180px" width="320px"}
-![](images/Screenshot_2.jpg){:height="180px" width="320px"}
-![](images/Screenshot_3.jpg){:height="180px" width="320px"}
 
 ## Getting started
 
