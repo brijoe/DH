@@ -9,12 +9,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-/**
- * 查看网络日志的Activity
- *
- * @Bridge
- */
-public class LogActivity extends Activity {
+public  class LogActivity extends Activity {
 
     private ListView mListView;
     private NetworkLogAdapter mAdapter;
@@ -28,7 +23,7 @@ public class LogActivity extends Activity {
     }
 
     private void init() {
-        mListView = (ListView) findViewById(R.id.list_networklogs);
+        mListView = (ListView) findViewById(R.id.list_network_logs);
 
         mLogRepository = new LogRepository(this);
         final List<NetworkLog> networkLogs = mLogRepository.readAllLogs();

@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">DH</string>
+    <string name="dialog_title">DH开发助手 v1.0.0</string>
+    <string name="copy_success">拷贝成功</string>
+    <string name="copy_fail">拷贝失败</string>
+    <string name="net_log">查看网络日志</string>
+    <string name="app_info">应用信息</string>
+    <string name="language_pref">系统语言设置</string>
+    <string name="developer_options">开发者选项</string>
+    <string name="tool_box">ToolBox</string>
+    <string name="handle_intent_error">无法打开对应界面，请手动开启</string>
+    <string name="network_detail">详情</string>
+    <string name="request_latency">请求耗时\t</string>
+    <string name="request_headers">请求头</string>
+    <string name="response_headers">响应头</string>
+    <string name="post_data">Post数据</string>
+    <string name="response_data">返回结果</string>
+
+    <string name="page_info">页面信息</string>
+    <string name="page_name">页面名称</string>
+    <string name="intent_info">Intent信息</string>
+    <string name="caller_name">调用者</string>
+    <string name="package_name">包名</string>
+    <string name="package_version">版本</string>
+    <string name="app_signature">应用签名</string>
+    <string name="md5_value">md5值</string>
+    <string name="sha1_value">SHA1值</string>
+    <string name="sha256_value">SHA256值</string>
+    <string name="process_info">进程信息</string>
+    <string name="process_name">进程名称</string>
+    <string name="memory_used">内存使用(Java)</string>
+    <string name="model_name">设备型号</string>
+    <string name="os_version">Android 版本</string>
+    <string name="device_info">设备信息</string>
+    <string name="screen_density">屏幕密度</string>
+    <string name="screen_resolution_available">屏幕可用分辨率</string>
+    <string name="share_title">分享至</string>
+</resources>

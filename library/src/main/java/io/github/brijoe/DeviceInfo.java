@@ -2,12 +2,6 @@ package io.github.brijoe;
 
 import java.io.Serializable;
 
-/**
- * 设备信息
- *
- * @Brijoe
- */
-
 class DeviceInfo implements Serializable {
     private String model;
     private String osVersion;

@@ -28,22 +28,10 @@ import java.util.Iterator;
 import java.util.List;
 
 
-/**
- * 工具类
- *
- * @bridge
- */
-class DHUtil {
+class DHTool {
 
+    private static final String TAG = "DH";
 
-    private static final String TAG = "DebugUtil";
-
-    /**
-     * 获取应用包名
-     *
-     * @param context
-     * @return
-     */
     public static String getAppPackageName(Context context) {
         if (context == null) {
             return null;
@@ -51,12 +39,7 @@ class DHUtil {
         return context.getPackageName();
     }
 
-    /**
-     * 获取应用版本名称方法
-     *
-     * @param context
-     * @return
-     */
+
     public static String getAppVersionName(Context context) {
         if (context == null) {
             return null;
@@ -69,12 +52,7 @@ class DHUtil {
         }
     }
 
-    /**
-     * 获取应用版本号
-     *
-     * @param context
-     * @return
-     */
+
     public static int getAppVersionCode(Context context) {
         if (context == null) {
             return -1;
@@ -88,12 +66,7 @@ class DHUtil {
     }
 
 
-    /**
-     * 获取手机屏幕宽度通用方法
-     *
-     * @param context
-     * @return
-     */
+
     public static int getScreenWidth(Context context) {
         if (null == context) {
             return 0;
@@ -103,12 +76,7 @@ class DHUtil {
         return screenWidth;
     }
 
-    /**
-     * 获取手机屏幕高度通用方法
-     *
-     * @param context
-     * @return
-     */
+
     public static int getScreenHeight(Context context) {
         if (null == context) {
             return 0;
@@ -146,13 +114,7 @@ class DHUtil {
         return String.valueOf(context.getResources().getDisplayMetrics().densityDpi)+"dp / "+densityDes;
     }
 
-    /**
-     * 屏幕尺寸dip转px换算方法
-     *
-     * @param context
-     * @param dipValue dip值
-     * @return
-     */
+
     public static int dip2px(Context context, float dipValue) {
         if (null == context) {
             return 0;
@@ -161,13 +123,7 @@ class DHUtil {
         return (int) (dipValue * scaleValue + 0.5f);
     }
 
-    /**
-     * 屏幕尺寸px转dip换算方法
-     *
-     * @param context
-     * @param pxValue px值‚
-     * @return
-     */
+
     public static int px2dip(Context context, float pxValue) {
         if (null == context) {
             return 0;
@@ -176,62 +132,36 @@ class DHUtil {
         return (int) (pxValue / scaleValue + 0.5f);
     }
 
-    /**
-     * 获取手机品牌
-     *
-     * @return
-     */
+
     public static String getPhoneBrand() {
         return android.os.Build.BRAND;
     }
 
-    /**
-     * 获取手机型号
-     *
-     * @return
-     */
+
     public static String getPhoneModel() {
         return android.os.Build.MODEL;
     }
 
-    /**
-     * 获取手机Android API等级（22、23 ...）
-     *
-     * @return
-     */
+
     public static int getBuildLevel() {
         return android.os.Build.VERSION.SDK_INT;
     }
 
-    /**
-     * 获取手机Android 版本（4.4、5.0、5.1 ...）
-     *
-     * @return
-     */
+
     public static String getBuildVersion() {
         return android.os.Build.VERSION.RELEASE;
     }
 
-    /**
-     * 获取当前App进程的id
-     *
-     * @return
-     */
+
     public static int getAppProcessId() {
         return android.os.Process.myPid();
     }
 
-    /**
-     * 获取当前App进程的Name
-     *
-     * @param context
-     * @param processId
-     * @return
-     */
+
     public static String getAppProcessName(Context context, int processId) {
         String processName = null;
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        // 获取所有运行App的进程集合
+
         List l = am.getRunningAppProcesses();
         Iterator i = l.iterator();
         PackageManager pm = context.getPackageManager();
@@ -251,17 +181,12 @@ class DHUtil {
         return processName;
     }
 
-    /**
-     * 获取设备标识码，读取IMEI，如果IMEI读取失败读取IMSI, 如果IMSI读取失败读取mac地址
-     *
-     * @param context
-     * @return
-     */
+
     public static String getDeviceId(Context context) {
         if (null == context) {
             return null;
         }
-        final String imeiStr = getImeiString(context);
+        final String imeiStr = getIMEIString(context);
         if (!TextUtils.isEmpty(imeiStr)) {
             return imeiStr;
         } else {
@@ -274,16 +199,11 @@ class DHUtil {
         }
     }
 
-    /**
-     * 判断当前手机网络的连接状态
-     *
-     * @param context
-     * @return
-     */
+
     public static boolean isNetConnected(Context context) {
         boolean isConnected = false;
         try {
-            final ConnectivityManager connManager = getConnectServicve(context);
+            final ConnectivityManager connManager = getConnectService(context);
             NetworkInfo info = connManager.getActiveNetworkInfo();
             if (info != null && info.isConnected()
                     && info.getState() == NetworkInfo.State.CONNECTED) {
@@ -296,13 +216,7 @@ class DHUtil {
     }
 
 
-    /**
-     * 获取设备的IMEI字符串
-     *
-     * @param context
-     * @return
-     */
-    public static String getImeiString(Context context) {
+    public static String getIMEIString(Context context) {
         if (null == context) {
             return "";
         }
@@ -314,12 +228,6 @@ class DHUtil {
         }
     }
 
-    /**
-     * 获取设备的IMSI的字符串
-     *
-     * @param context
-     * @return
-     */
     public static String getImsiString(Context context) {
         if (null == context) {
             return "";
@@ -334,16 +242,11 @@ class DHUtil {
         }
     }
 
-    /**
-     * 获取MAC地址的字符串
-     *
-     * @param context
-     * @returnUtilsToast
-     */
+
     public static String getMacString(Context context) {
         WifiInfo info = null;
         try {
-            info = getWifiServicve(context).getConnectionInfo();
+            info = getWifiService(context).getConnectionInfo();
         } catch (Exception e) {
             info = null;
         }
@@ -357,78 +260,44 @@ class DHUtil {
         return mac;
     }
 
-    /**
-     * 获取ActivityManager管理类
-     */
+
     private static ActivityManager getActivityService(Context context) {
         return ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE));
     }
 
-    /**
-     * 获取ConnectivityManager管理类
-     *
-     * @param context
-     * @return
-     */
-    public static ConnectivityManager getConnectServicve(Context context) {
+
+    public static ConnectivityManager getConnectService(Context context) {
         return (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
-    /**
-     * 获取WifiManager类
-     *
-     * @param context
-     * @return
-     */
-    public static WifiManager getWifiServicve(Context context) {
+
+    public static WifiManager getWifiService(Context context) {
         return (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     }
 
-    /**
-     * 获取手机TelephonyManager类
-     *
-     * @param context
-     * @return
-     */
+
     public static TelephonyManager getTelpephonyService(Context context) {
         return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     }
 
-    /**
-     * SP 转 PX
-     *
-     * @param context Context
-     * @param spValue sp值
-     * @return
-     */
+
     public static float sp2px(Context context, float spValue) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spValue, context.getResources().getDisplayMetrics());
     }
 
-    /**
-     * 跳转到开发人员选项界面
-     *
-     * @param context
-     */
+
     public static void gotoDevModeSetting(Context context) {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
         handleIntent(context, intent);
     }
 
-    /**
-     * 跳转到应用设置界面
-     */
+
     public static void gotoAppSetting(Context context) {
         Uri packageURI = Uri.parse("package:" + getAppPackageName(context));
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
         handleIntent(context, intent);
     }
 
-    /**
-     * 跳转到语言设置界面
-     *
-     * @param context
-     */
     public static void gotoLanguageSetting(Context context) {
 
         Intent intent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
@@ -445,15 +314,11 @@ class DHUtil {
         if (list.size() > 0)
             context.startActivity(intent);
         else
-            Toast.makeText(context, "无法打开对应界面，请手动开启", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.handle_intent_error), Toast.LENGTH_SHORT).show();
 
     }
 
-    /**
-     * 应用签名 的keyHash 返回
-     *
-     * @return
-     */
+
     public static String getSignSHA1(Context context) {
 
         try {
@@ -475,11 +340,6 @@ class DHUtil {
         return "";
     }
 
-    /**
-     * 应用签名 的keyHash 返回
-     *
-     * @return
-     */
     public static String getSignSHA256(Context context) {
 
         try {
@@ -501,12 +361,6 @@ class DHUtil {
         return "";
     }
 
-    /**
-     * 获取sign的md5值
-     *
-     * @param context
-     * @return
-     */
     public static String getSignMD5(Context context) {
 
         try {
@@ -553,11 +407,6 @@ class DHUtil {
                 "MB\ntotalMemory:"+runtime.totalMemory()/1024/1024 +"MB";
     }
 
-    /**
-     * 对json字符串格式化输出
-     * @param jsonStr
-     * @return
-     */
     public static String formatJson(String jsonStr) {
         if (null == jsonStr || "".equals(jsonStr)) return "";
         StringBuilder sb = new StringBuilder();
@@ -597,11 +446,6 @@ class DHUtil {
         return sb.toString();
     }
 
-    /**
-     * 添加space
-     * @param sb
-     * @param indent
-     */
     private static void addIndentBlank(StringBuilder sb, int indent) {
         for (int i = 0; i < indent; i++) {
             sb.append('\t');

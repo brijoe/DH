@@ -1,10 +1,8 @@
 package io.github.brijoe;
 
-/**
- * Created by bridgeliang on 2018/5/4.
- */
 
 class DHInfo {
+
     private static PageInfo sPageInfo;
     private static AppInfo sAppInfo;
     private static DeviceInfo sDeviceInfo;

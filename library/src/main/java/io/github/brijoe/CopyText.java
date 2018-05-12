@@ -11,17 +11,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import io.github.brijoe.R;
+ class CopyText extends TextView {
 
-/**
- * 点击可以进行copy文字的TextView
- *
- * @author Brijoe
- */
-
-public class CopyText extends TextView {
-
-    private int padding = DHUtil.dip2px(getContext(), 5);
+    private int padding = DHTool.dip2px(getContext(), 5);
 
     public CopyText(Context context) {
         this(context, null);

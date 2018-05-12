@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#191919"
+    android:background="@color/color_2a2a2a"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#666666">
+        android:background="@color/color_666666">
 
         <Button
             android:id="@+id/btnBack"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="请求详情"
+            android:text="@string/network_detail"
             android:textColor="#ffffff"
             android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -78,7 +78,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="8dp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/color_ffffff" />
 
                 <io.github.brijoe.CopyText
                     android:id="@+id/url"
@@ -87,7 +87,7 @@
                     android:layout_below="@id/date"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="40dp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/color_ffffff" />
 
                 <ImageView
                     android:id="@+id/code_img"
@@ -103,7 +103,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
             <RelativeLayout
                 android:id="@+id/relative2"
@@ -119,12 +119,12 @@
                 android:paddingTop="10dp">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/latency_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:text="请求耗时："
-                    android:textColor="#e8b25a"
+                    android:text="@string/request_latency"
+                    android:textColor="@color/color_e8b25a"
                     android:textSize="25sp" />
 
                 <TextView
@@ -132,12 +132,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/textView2"
-                    android:layout_toRightOf="@+id/textView2"
-                    android:text="TextView"
-                    android:textColor="@color/white"
+                    android:layout_toEndOf="@+id/latency_title"
+                    android:layout_toRightOf="@+id/latency_title"
+                    android:text="@string/not_have"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="25sp" />
-
 
             </RelativeLayout>
 
@@ -145,15 +144,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:text="请求头"
-                android:textColor="#e8b25a"
+                android:text="@string/request_headers"
+                android:textColor="@color/color_e8b25a"
                 android:textSize="25sp" />
 
             <io.github.brijoe.CopyText
@@ -163,14 +162,14 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="5dp"
-                android:text="asda"
-                android:textColor="@color/white"
+                android:text="@string/not_have"
+                android:textColor="@color/color_ffffff"
                 android:textSize="16sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -178,14 +177,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:text="响应头"
-                android:textColor="#e8b25a"
+                android:text="@string/response_headers"
+                android:textColor="@color/color_e8b25a"
                 android:textSize="25sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
             <io.github.brijoe.CopyText
                 android:id="@+id/headers"
@@ -194,14 +193,14 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="5dp"
-                android:text="asda"
-                android:textColor="@color/white"
+                android:text="@string/not_have"
+                android:textColor="@color/color_ffffff"
                 android:textSize="16sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -209,14 +208,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:text="Post数据"
-                android:textColor="#e8b25a"
+                android:text="@string/post_data"
+                android:textColor="@color/color_e8b25a"
                 android:textSize="25sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
             <io.github.brijoe.CopyText
                 android:id="@+id/postData"
@@ -225,14 +224,14 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="5dp"
-                android:text="asda"
-                android:textColor="@color/white"
+                android:text="@string/not_have"
+                android:textColor="@color/color_ffffff"
                 android:textSize="16sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -240,14 +239,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:text="响应体"
-                android:textColor="#e8b25a"
+                android:text="@string/response_data"
+                android:textColor="@color/color_e8b25a"
                 android:textSize="25sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/color_ffffff" />
 
 
             <io.github.brijoe.CopyText
@@ -257,7 +256,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/color_ffffff" />
 
         </LinearLayout>
     </ScrollView>

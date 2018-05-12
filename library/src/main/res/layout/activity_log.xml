@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2a2a2a"
+    android:background="@color/color_2a2a2a"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#666666">
+        android:background="@color/color_666666">
 
         <Button
             android:id="@+id/btnBack"
@@ -25,7 +25,8 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="网络请求日志"
+            android:text="@string/net_log"
+            android:textStyle="bold"
             android:textColor="#ffffff" />
 
 
@@ -51,7 +52,7 @@
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/list_networklogs"
+        android:id="@+id/list_network_logs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />

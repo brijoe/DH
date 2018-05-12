@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,12 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-
-/**
- * 查看网络详情Activity
- *
- * @Bridge
- */
 
 public class LogDetailActivity extends Activity {
 
@@ -51,12 +46,17 @@ public class LogDetailActivity extends Activity {
         url.setText("[" + networkLog.getRequestType() + "] " + networkLog.getUrl());
         code.setText(networkLog.getResponseCode());
         latency.setText(String.format("%sms", networkLog.getDuration().intValue()));
-        requestHeaders.setText(networkLog.getRequestHeaders());
-        responseHeaders.setText(networkLog.getResponseHeaders());
-        postData.setText(networkLog.getPostData());
-        response.setText(DHUtil.formatJson(networkLog.getResponseData()));
-        response.setTextSize(15);
-        postData.setText(networkLog.getPostData());
+
+        if (!TextUtils.isEmpty(networkLog.getRequestHeaders()))
+            requestHeaders.setText(networkLog.getRequestHeaders());
+
+        if (!TextUtils.isEmpty(networkLog.getResponseHeaders()))
+            responseHeaders.setText(networkLog.getResponseHeaders());
+
+        if (!TextUtils.isEmpty(networkLog.getPostData()))
+            postData.setText(networkLog.getPostData());
+        if (!TextUtils.isEmpty(networkLog.getResponseData()))
+            response.setText(DHTool.formatJson(networkLog.getResponseData()));
 
         if (networkLog.getResponseCode().startsWith("2")) {
             status.setBackgroundColor(Color.GREEN);
@@ -84,7 +84,7 @@ public class LogDetailActivity extends Activity {
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, networkLog.toString());
                 sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent, "Share with"));
+                startActivity(Intent.createChooser(sendIntent, getString(R.string.share_title)));
             }
         });
 

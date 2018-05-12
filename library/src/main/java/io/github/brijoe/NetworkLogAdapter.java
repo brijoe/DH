@@ -16,10 +16,6 @@ import java.util.List;
 import java.util.Locale;
 
 
-/**
- * LogAdapter
- */
-
 class NetworkLogAdapter extends BaseAdapter {
 
     private List<NetworkLog> networkLogList;

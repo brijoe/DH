@@ -1,6 +1,39 @@
 <resources>
     <string name="app_name">DH</string>
-    <string name="share_info">点击分享</string>
-    <string name="copy_success">拷贝成功</string>
-    <string name="copy_fail">拷贝失败</string>
+    <string name="dialog_title">DH tools v1.0.0</string>
+    <string name="copy_success">Copy successfully</string>
+    <string name="copy_fail">Copy failed </string>
+    <string name="net_log">Network Log</string>
+    <string name="app_info">App Info</string>
+    <string name="language_pref">Language Preferences</string>
+    <string name="developer_options">Developer Options</string>
+    <string name="tool_box">ToolBox</string>
+    <string name="handle_intent_error"> Can not open the corresponding interface, please open it manually.</string>
+    <string name="network_detail">Detail</string>
+    <string name="request_latency">Latency\t</string>
+    <string name="request_headers">Request Headers</string>
+    <string name="response_headers">Response Headers</string>
+    <string name="post_data">Post Data</string>
+    <string name="response_data">Response Data</string>
+
+    <string name="page_info">Page Info </string>
+    <string name="page_name">Page Name</string>
+    <string name="intent_info"> Intent Info </string>
+    <string name="caller_name">Caller</string>
+    <string name="package_name">Package Name</string>
+    <string name="package_version">App Version</string>
+    <string name="app_signature"> App Signature </string>
+    <string name="md5_value">MD5 Value</string>
+    <string name="sha1_value">SHA1 Value</string>
+    <string name="sha256_value">SHA256 Value</string>
+    <string name="process_info">Process Info</string>
+    <string name="process_name">process Name</string>
+    <string name="memory_used">Memory Usage(Java)</string>
+    <string name="model_name">Model Name</string>
+    <string name="os_version">OS Version</string>
+    <string name="device_info">Device info </string>
+    <string name="screen_density">Screen Density</string>
+    <string name="screen_resolution_available">Resolution(available)</string>
+    <string name="share_title">Share with</string>
+    <string name="not_have">n/a</string>
 </resources>

@@ -14,7 +14,10 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 
 /**
- * OkHttp  拦截器
+ *
+ * A DH interceptor based on OkHTTP's {@link Interceptor},which is used to record network log.
+ *
+ * @author Brijoe
  */
 public final class DHInterceptor implements Interceptor {
 
@@ -50,12 +53,12 @@ public final class DHInterceptor implements Interceptor {
 
         MediaType contentType = response.body().contentType();
 
-        //将数据写入数据库保存
+        //insert this record into db
         logRepository.insert(networkLog);
 
         return response.newBuilder().body(ResponseBody.create(contentType, body)).build();
     }
-    //转化为字符串
+
     private static String bodyToString(final Request request) {
 
         try {
@@ -67,7 +70,6 @@ public final class DHInterceptor implements Interceptor {
             return "";
         }
     }
-    //生成请求ID
     private static long getRequestId() {
         Calendar calendar = Calendar.getInstance();
         return Long.valueOf(calendar.getTimeInMillis());

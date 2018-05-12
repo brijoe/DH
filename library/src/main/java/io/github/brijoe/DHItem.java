@@ -9,19 +9,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-/**
- * 菜单项
- *
- * @author Bridge
- */
-
-public class DHItem extends TextView {
+ class DHItem extends TextView {
 
     private ViewGroup.LayoutParams layoutParams =
             new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
 
-    private int padding = DHUtil.dip2px(getContext(), 10);
+    private int padding = DHTool.dip2px(getContext(), 10);
 
     private Context mContext;
 

@@ -5,14 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import io.github.brijoe.R;
 
-/**
- * 查看当前页面的信息 Activity
- *
- * @Bridge
- */
-public class ToolBoxActivity extends Activity {
+ public class ToolBoxActivity extends Activity {
 
 
     private TextView mTvPageName, mTvPageIntent;

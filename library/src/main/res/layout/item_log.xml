@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/code"
         android:layout_marginLeft="16dp"
-        android:textColor="#e8b25a"
+        android:textColor="@color/color_e8b25a"
         android:textSize="16dp"
         android:textStyle="bold" />
 

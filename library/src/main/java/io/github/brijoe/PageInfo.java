@@ -2,12 +2,6 @@ package io.github.brijoe;
 
 import java.io.Serializable;
 
-/**
- * 页面信息
- *
- * @Brjoe
- */
-
 class PageInfo implements Serializable {
 
 

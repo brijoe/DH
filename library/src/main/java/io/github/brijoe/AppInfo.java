@@ -1,9 +1,5 @@
 package io.github.brijoe;
 
-/**
- * Created by bridgeliang on 2018/5/4.
- */
-
 class AppInfo {
     private String pkgName;
     private String version;

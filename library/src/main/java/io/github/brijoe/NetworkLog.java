@@ -3,13 +3,10 @@ package io.github.brijoe;
 import java.io.Serializable;
 import java.util.Locale;
 
-/**
- * NetworkLog bean
- */
 
  class NetworkLog  implements Serializable{
 
-    private static final long serialVersionUID = 12331L;
+    private static final long serialVersionUID = 666L;
 
     private Long id;
     private String url;
@@ -122,12 +119,13 @@ import java.util.Locale;
                 "Request Type : %s \n" +
                         "Request Url : %s\n" +
                         "Request Date : %d\n" +
-                        "Request Headers : %s\n" +
+                        "Request Headers :%s\n"+
+                        "Response Headers : %s\n" +
                         "Response Code : %s\n" +
                         "Response Data : %s\n" +
                         "Duration : %d\n" +
                         "Error Client Desc : %s\n" +
-                        "Post Data : %s",requestType,url,date, responseHeaders,responseCode,responseData,
+                        "Post Data : %s",requestType,url,date, requestHeaders,responseHeaders,responseCode,responseData,
                 (long)duration.doubleValue(),errorClientDesc,postData);
     }
 }

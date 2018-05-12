@@ -4,26 +4,20 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.brijoe.R;
-
-/**
- * 调试窗口
- *
- * @author Bridge
- */
 
 class DHDialog extends Dialog {
 
     private Context mContext;
     private View mRootView;
+    private TextView mTvTitle;
 
     private List<Debugger> mList = new ArrayList<>();
 
@@ -37,9 +31,9 @@ class DHDialog extends Dialog {
     private void init(final Context context) {
         mContext = context;
         mRootView = LayoutInflater.from(context).inflate(R.layout.dialog_dh, null);
+        mTvTitle=(TextView) mRootView.findViewById(R.id.tvTitle);
+        mTvTitle.setText(mContext.getString(R.string.dialog_title));
         initItems();
-        renderItems();
-
     }
 
     @Override
@@ -50,50 +44,44 @@ class DHDialog extends Dialog {
     }
 
     private void initItems() {
-
-        Log.d(TAG, "initItems: ");
-
-        //内部预定义item
-        mList.add(new Debugger("查看网络日志", new View.OnClickListener() {
+        //inner items
+        mList.add(new Debugger(mContext.getString(R.string.net_log), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mContext.startActivity(new Intent(mContext, LogActivity.class));
             }
         }));
 
-        mList.add(new Debugger("应用设置", new View.OnClickListener() {
+        mList.add(new Debugger(mContext.getString(R.string.app_info), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DHUtil.gotoAppSetting(mContext);
+                DHTool.gotoAppSetting(mContext);
             }
         }));
 
-        mList.add(new Debugger("系统语言设置", new View.OnClickListener() {
+        mList.add(new Debugger(mContext.getString(R.string.language_pref), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DHUtil.gotoLanguageSetting(mContext);
+                DHTool.gotoLanguageSetting(mContext);
             }
         }));
 
-        mList.add(new Debugger("开发者选项", new View.OnClickListener() {
+        mList.add(new Debugger(mContext.getString(R.string.developer_options), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DHUtil.gotoDevModeSetting(mContext);
+                DHTool.gotoDevModeSetting(mContext);
             }
         }));
-        mList.add(new Debugger("ToolBox", new View.OnClickListener() {
+        mList.add(new Debugger(mContext.getString(R.string.tool_box), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mContext.startActivity(new Intent(mContext, ToolBoxActivity.class));
             }
         }));
-        //获取附加的List
+        //outer items
         mList.addAll(DH.getAppendList());
 
-    }
-
-    private void renderItems() {
-
+        //render items
         for (int i = 0; i < mList.size(); i++) {
             Debugger debugger = mList.get(i);
             DHItem item = new DHItem(mContext);
@@ -103,5 +91,6 @@ class DHDialog extends Dialog {
         }
 
     }
+
 
 }

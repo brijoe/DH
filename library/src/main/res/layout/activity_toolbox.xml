@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2a2a2a"
+    android:background="@color/color_2a2a2a"
     android:orientation="vertical"
     android:paddingBottom="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#666666">
+        android:background="@color/color_666666">
 
         <Button
             android:id="@+id/btnBack"
@@ -27,7 +27,8 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="ToolBox"
+            android:text="@string/tool_box"
+            android:textStyle="bold"
             android:textColor="#ffffff" />
 
 
@@ -51,8 +52,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="页面信息"
-                    android:textColor="#e8b25a"
+                    android:text="@string/page_info"
+                    android:textColor="@color/color_e8b25a"
                     android:textSize="24sp" />
 
 
@@ -60,8 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="页面名称"
-                    android:textColor="#ffffff"
+                    android:text="@string/page_name"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
                 <io.github.brijoe.CopyText
@@ -69,31 +70,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp"
-                    tools:text="测试文本" />
+                    tools:text="@string/not_have" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Intent信息"
-                    android:textColor="#ffffff"
+                    android:text="@string/intent_info"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
                 <io.github.brijoe.CopyText
                     android:id="@+id/tvPageIntent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    tools:text="Intent信息" />
+                    tools:text="Intent data" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="调用者"
-                    android:textColor="#ffffff"
+                    android:text="@string/caller_name"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
                 <io.github.brijoe.CopyText
@@ -101,8 +101,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:text="无"
-                    android:textColor="#ffffff"
+                    android:text="@string/not_have"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -117,8 +117,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="应用信息"
-                    android:textColor="#e8b25a"
+                    android:text="@string/app_info"
+                    android:textColor="@color/color_e8b25a"
                     android:textSize="24sp" />
 
 
@@ -126,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="包名"
+                    android:text="@string/package_name"
                     android:textColor="#ffffff"
                     android:textSize="16sp" />
 
@@ -135,17 +135,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp"
-                    tools:text="包名" />
+                    tools:text="@string/not_have" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="版本"
-                    android:textColor="#ffffff"
+                    android:text="@string/package_version"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
                 <io.github.brijoe.CopyText
@@ -153,24 +153,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp"
-                    tools:text="版本" />
+                    tools:text="@string/package_version" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="应用签名"
-                    android:textColor="#ffffff"
+                    android:text="@string/app_signature"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="md5值"
-                    android:textColor="#ffffff"
+                    android:text="@string/md5_value"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
 
@@ -179,7 +179,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp"
                     tools:text="md5" />
 
@@ -187,8 +187,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="SHA1值"
-                    android:textColor="#ffffff"
+                    android:text="@string/sha1_value"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <io.github.brijoe.CopyText
@@ -196,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp"
                     tools:text="SHA1" />
 
@@ -204,8 +204,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="SHA256值"
-                    android:textColor="#ffffff"
+                    android:text="@string/sha256_value"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
 
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:text="SHA256"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -228,24 +228,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="进程信息"
-                    android:textColor="#e8b25a"
+                    android:text="@string/process_info"
+                    android:textColor="@color/color_e8b25a"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="进程名称"
-                    android:textColor="#ffffff"
+                    android:text="@string/process_name"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <io.github.brijoe.CopyText
                     android:id="@+id/tvProcId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="进程ID"
-                    android:textColor="#ffffff"
+                    android:text="@string/process_name"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
 
@@ -253,8 +253,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="内存使用(Java)"
-                    android:textColor="#ffffff"
+                    android:text="@string/memory_used"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
 
@@ -262,9 +262,9 @@
                     android:id="@+id/tvProcMemory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp"
-                    tools:text="内存使用情况" />
+                    tools:text="@string/memory_used" />
 
             </LinearLayout>
 
@@ -277,65 +277,65 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="设备信息"
+                    android:text="@string/device_info"
 
-                    android:textColor="#e8b25a"
+                    android:textColor="@color/color_e8b25a"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Android 版本"
-                    android:textColor="#ffffff"
+                    android:text="@string/os_version"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <io.github.brijoe.CopyText
                     android:id="@+id/tvOSversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Android 版本"
-                    android:textColor="#ffffff"
+                    android:text="@string/os_version"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="设备型号"
-                    android:textColor="#ffffff"
+                    android:text="@string/model_name"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <io.github.brijoe.CopyText
                     android:id="@+id/tvModel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="设备型号"
-                    android:textColor="#ffffff"
+                    android:text="@string/model_name"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="屏幕可用分辨率"
-                    android:textColor="#ffffff"
+                    android:text="@string/screen_resolution_available"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <io.github.brijoe.CopyText
                     android:id="@+id/tvResolution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="屏幕分辨率"
-                    android:textColor="#ffffff"
+                    android:text="screen_resolution_available"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="屏幕密度"
-                    android:textColor="#ffffff"
+                    android:text="@string/screen_density"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
 
@@ -343,8 +343,8 @@
                     android:id="@+id/tvDensity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="屏幕密度"
-                    android:textColor="#ffffff"
+                    android:text="@string/screen_density"
+                    android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
             </LinearLayout>

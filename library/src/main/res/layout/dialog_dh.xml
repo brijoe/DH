@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="5dp"
-        android:text="调试工具 v1.0"
+        android:textStyle="bold"
+        android:textColor="@color/color_e8b25a"
+        android:text="@string/dialog_title"
         android:textSize="14sp" />
 
     <View

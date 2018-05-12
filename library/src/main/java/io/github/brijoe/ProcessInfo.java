@@ -2,12 +2,6 @@ package io.github.brijoe;
 
 import java.io.Serializable;
 
-/**
- * 进程信息
- *
- * @author Brijoe
- */
-
 class ProcessInfo implements Serializable {
 
     private String proName;

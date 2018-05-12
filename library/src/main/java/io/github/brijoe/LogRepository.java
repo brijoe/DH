@@ -7,53 +7,28 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * private Long id;
- * private String requestType;
- * private String url;
- * private Long date;
- * private String headers;
- * private String responseCode;
- * private String responseData;
- * private Double duration;
- * private String errorClientDesc;
- * private String postData;
- */
- public class LogRepository extends BaseRepository<NetworkLog> {
+ class LogRepository extends BaseRepository<NetworkLog> {
 
 
     public LogRepository(Context context) {
         super(context);
     }
 
-    /**
-     * 插入数据
-     *
-     * @param networkLog
-     * @return
-     */
+
     public long insert(NetworkLog networkLog) {
         ContentValues values = getContentValues(networkLog);
         values.remove("id");
         return insert(DBConstant.TABLE_LOG, null, values);
     }
 
-    /**
-     * 更新数据
-     *
-     * @param networkLog
-     */
+
     public void update(NetworkLog networkLog) {
         ContentValues cv = getContentValues(networkLog);
         cv.remove("id");
         update(DBConstant.TABLE_LOG, cv, "id = ?", new String[]{networkLog.getId() + ""});
     }
 
-    /**
-     * 删除数据
-     *
-     * @param id
-     */
+
     public void delete(int id) {
         delete(DBConstant.TABLE_LOG, "id = ?", new String[]{id + ""});
     }
@@ -62,11 +37,7 @@ import java.util.List;
         delete(DBConstant.TABLE_LOG,"",null);
     }
 
-    /**
-     * 查询所有数据
-     *
-     * @return
-     */
+
     public List<NetworkLog> readAllLogs() {
         List<NetworkLog> list = query(DBConstant.TABLE_LOG, null, null, null, null, null, "ID DESC", null);
         if (list != null && !list.isEmpty()) {

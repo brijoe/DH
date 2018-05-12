@@ -2,11 +2,16 @@ package io.github.brijoe;
 
 import android.view.View;
 
+/**
+ * The {@code Debugger} class wraps a item of the dialog.
+ *
+ * @author Brijoe
+ */
 public final class Debugger {
     private String mItemName;
     private View.OnClickListener mListener;
 
-    public Debugger( String itemName, View.OnClickListener listener) {
+    public Debugger(String itemName, View.OnClickListener listener) {
         this.mItemName = itemName;
         this.mListener = listener;
     }
