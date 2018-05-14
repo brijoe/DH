@@ -73,10 +73,10 @@ public class MyApplication extends Application {
 ```
 
 
-##接下来
+## 接下来
 编译运行你的App，摇一摇你的手机，窗口出现了，So easy,哪里不会点哪里~妈妈再也不用担心我的学习了！！！
 
-##定制化
+## 定制化
 
 ### 自己处理菜单的显示逻辑 
 
