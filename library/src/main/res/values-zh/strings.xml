@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialog_title">DH开发助手 v1.0.0</string>
+    <string name="dialog_title">DH开发助手 %s</string>
     <string name="copy_success">拷贝成功</string>
     <string name="copy_fail">拷贝失败</string>
     <string name="net_log">查看网络日志</string>

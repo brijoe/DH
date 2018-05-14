@@ -33,6 +33,7 @@ class DHDialog extends Dialog {
         mRootView = LayoutInflater.from(context).inflate(R.layout.dialog_dh, null);
         mTvTitle=(TextView) mRootView.findViewById(R.id.tvTitle);
         mTvTitle.setText(mContext.getString(R.string.dialog_title));
+        mTvTitle.setText(String.format(mContext.getString(R.string.dialog_title),BuildConfig.VERSION_NAME));
         initItems();
     }
 

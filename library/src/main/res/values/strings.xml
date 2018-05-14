@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialog_title">DH tools v1.0.0</string>
+    <string name="dialog_title">DH tools %s</string>
     <string name="copy_success">Copy successfully</string>
     <string name="copy_fail">Copy failed </string>
     <string name="net_log">Network Log</string>

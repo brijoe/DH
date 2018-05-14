@@ -23,27 +23,43 @@ public final class DH {
 
     private static int mActivityCount = 0;
 
-    private DH() {
-    }
+    private static boolean mEnabled =true;
+
+    private DH() { }
 
 
     /**
-     * Start watching activity references (on ICS+).
+     * Start watching activity references (on ICS+), the enable flag is set to true.
      *
-     * @param context
+     * @param context Application context
      */
 
-    public static void install(Context context) {
+    public static void  install(Context context) {
+       install(context,true);
+    }
+
+    /**
+     * Start watching activity references (on ICS+),the enable flag is controlled by caller.
+     * @param context Application context
+     * @param enabled whether the DH library is enabled or not.
+     */
+    public static void install(Context context,boolean enabled){
         if (context == null || !(context instanceof Application))
             throw new IllegalArgumentException("context must be application context");
         mContext = context;
-        ((Application) context).registerActivityLifecycleCallbacks(lifecycleCallbacks);
-    }
+        mEnabled =enabled;
+       if(enabled)
+            ((Application) context).registerActivityLifecycleCallbacks(lifecycleCallbacks);
 
+    }
 
     protected static Context getContext() {
 
         return mContext;
+    }
+
+    protected static boolean getEnabled(){
+        return mEnabled;
     }
 
     /**

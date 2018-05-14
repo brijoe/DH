@@ -27,14 +27,12 @@ public final class DHInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
 
-
-        request.headers().toString();
-
+        //if disabled,do nothing and return directly.
+        if(!DH.getEnabled()){
+            return chain.proceed(request);
+        }
         long t1 = System.nanoTime();
-
         Response response = chain.proceed(request);
-
-
         long t2 = System.nanoTime();
 
         NetworkLog networkLog = new NetworkLog();

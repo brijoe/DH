@@ -33,9 +33,20 @@ In your module build.gradle:
 ```
 dependencies {
 		 ...
-	    implementation 'com.github.brijoe:DH:1.0.1'
+	    implementation 'com.github.brijoe:DH:1.1.0'
 	    ...
 	}
+
+```
+**Notice:if your module has compiled okhttp interceptor library,you can
+exclude the inbuilt one to avoid conflict.**
+
+as following:
+
+```
+ implementation ('com.github.brijoe:DH:1.1.0'){
+            exclude group: 'com.squareup.okhttp3'
+        }
 
 ```
 In your Application class:
@@ -72,6 +83,16 @@ Now shake your phone，and the dialog will show up.
 
 ## Customize 
 
+### decide whether to show dialog or not 
+
+You are allowed to decide whether the dialog is displayed by
+passing a value of boolean type to `install()`method，especially when your app is in release mode.
+
+```
+	DH.install(context,boolean);
+```
+
+### customize your dialog items
 You can also add your menu item to the dialog if you are not satisfied with it.
 
 
@@ -84,6 +105,7 @@ You can also add your menu item to the dialog if you are not satisfied with it.
         }));
 
 ```
+
 
 ## License
 ```
