@@ -27,7 +27,7 @@
             android:gravity="center"
             android:text="@string/net_log"
             android:textStyle="bold"
-            android:textColor="#ffffff" />
+            android:textColor="@color/color_ffffff" />
 
 
         <Button
@@ -36,7 +36,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@id/btnFlush"
+            android:layout_toLeftOf="@+id/btnFlush"
             android:background="@drawable/clear" />
 
         <Button
