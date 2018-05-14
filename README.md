@@ -33,7 +33,7 @@ In your module build.gradle:
 ```
 dependencies {
 		 ...
-	    implementation 'com.github.brijoe:DH:1.0.0'
+	    implementation 'com.github.brijoe:DH:1.0.1'
 	    ...
 	}
 
