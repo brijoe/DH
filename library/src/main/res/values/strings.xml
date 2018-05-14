@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">DH</string>
     <string name="dialog_title">DH tools v1.0.0</string>
     <string name="copy_success">Copy successfully</string>
     <string name="copy_fail">Copy failed </string>
