@@ -35,7 +35,7 @@ In your module build.gradle:
 ```
 dependencies {
 		 ...
-	    implementation 'com.github.brijoe:DH:1.1.0'
+	    implementation 'com.github.brijoe:DH:1.1.1'
 	    ...
 	}
 
@@ -46,7 +46,7 @@ exclude the inbuilt one to avoid conflict.**
 as following:
 
 ```
- implementation ('com.github.brijoe:DH:1.1.0'){
+ implementation ('com.github.brijoe:DH:1.1.1'){
             exclude group: 'com.squareup.okhttp3'
         }
 
@@ -99,7 +99,7 @@ You can also add your menu item to the dialog if you are not satisfied with it.
 
 
 ```
- DH.addDebugger(new Debugger("My Item", new View.OnClickListener() {
+ DH.addDebugger(new Debugger(0,"My Item", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();

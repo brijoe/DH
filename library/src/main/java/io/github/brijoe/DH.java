@@ -29,7 +29,7 @@ public final class DH {
 
 
     /**
-     * Start watching activity references (on ICS+), the enable flag is set to true.
+     * Start watching activity references (on ICS+), the enable flag is set to true by default.
      *
      * @param context Application context
      */

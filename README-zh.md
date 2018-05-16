@@ -32,7 +32,7 @@
 ```
 dependencies {
 		 ...
-	    implementation 'com.github.brijoe:DH:1.1.0'
+	    implementation 'com.github.brijoe:DH:1.1.1'
 	    ...
 	}
 
@@ -40,7 +40,7 @@ dependencies {
 注意：如果你自己的项目中已经引入了OKHttp的拦截器库，那么在编译时可能会遇到冲突，你可以通过以下方式将库内部的依赖排除出去：
 
 ```
- implementation ('com.github.brijoe:DH:1.1.0'){
+ implementation ('com.github.brijoe:DH:1.1.1'){
             exclude group: 'com.squareup.okhttp3'
         }
 
@@ -93,7 +93,7 @@ public class MyApplication extends Application {
 
 
 ```
- DH.addDebugger(new Debugger("My Item", new View.OnClickListener() {
+ DH.addDebugger(new Debugger(0,"My Item", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();

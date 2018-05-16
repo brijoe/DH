@@ -39,6 +39,6 @@ import android.widget.TextView;
         setPadding(padding, padding, padding, padding);
         setGravity(Gravity.CENTER);
         setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
-        setBackground(mContext.getDrawable(R.drawable.dh_item_selector) );
+        setBackground(mContext.getDrawable(R.drawable.dh_item_inner_selector) );
     }
 }
