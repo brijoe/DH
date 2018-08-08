@@ -35,7 +35,7 @@ In your module build.gradle:
 ```
 dependencies {
 		 ...
-	    implementation 'com.github.brijoe:DH:1.1.1'
+	    implementation 'com.github.brijoe:DH:1.1.3'
 	    ...
 	}
 
@@ -46,7 +46,7 @@ exclude the inbuilt one to avoid conflict.**
 as following:
 
 ```
- implementation ('com.github.brijoe:DH:1.1.1'){
+ implementation ('com.github.brijoe:DH:1.1.3'){
             exclude group: 'com.squareup.okhttp3'
         }
 

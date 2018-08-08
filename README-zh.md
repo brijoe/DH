@@ -32,7 +32,7 @@
 ```
 dependencies {
 		 ...
-	    implementation 'com.github.brijoe:DH:1.1.1'
+	    implementation 'com.github.brijoe:DH:1.1.3'
 	    ...
 	}
 
@@ -40,7 +40,7 @@ dependencies {
 注意：如果你自己的项目中已经引入了OKHttp的拦截器库，那么在编译时可能会遇到冲突，你可以通过以下方式将库内部的依赖排除出去：
 
 ```
- implementation ('com.github.brijoe:DH:1.1.1'){
+ implementation ('com.github.brijoe:DH:1.1.3'){
             exclude group: 'com.squareup.okhttp3'
         }
 
