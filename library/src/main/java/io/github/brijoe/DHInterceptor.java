@@ -1,9 +1,7 @@
 package io.github.brijoe;
 
 
-
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Date;
 
 import okhttp3.Interceptor;
@@ -23,6 +21,8 @@ public final class DHInterceptor implements Interceptor {
 
     LogRepository logRepository = new LogRepository(DH.getContext());
 
+    private final String TAG="DHInterceptor";
+
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
@@ -36,7 +36,7 @@ public final class DHInterceptor implements Interceptor {
         long t2 = System.nanoTime();
 
         NetworkLog networkLog = new NetworkLog();
-        networkLog.setId(getRequestId());
+//        networkLog.setId(getRequestId());
         networkLog.setDate(new Date().getTime());
         networkLog.setDuration((t2 - t1) / 1e6d);
         networkLog.setErrorClientDesc("");
@@ -53,6 +53,7 @@ public final class DHInterceptor implements Interceptor {
 
         //insert this record into db
         logRepository.insert(networkLog);
+//        Log.d(TAG, "是否是主线程"+(Thread.currentThread()==Looper.getMainLooper().getThread()));
 
         return response.newBuilder().body(ResponseBody.create(contentType, body)).build();
     }
@@ -67,9 +68,5 @@ public final class DHInterceptor implements Interceptor {
         } catch (final Exception e) {
             return "";
         }
-    }
-    private static long getRequestId() {
-        Calendar calendar = Calendar.getInstance();
-        return Long.valueOf(calendar.getTimeInMillis());
     }
 }

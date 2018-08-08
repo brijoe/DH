@@ -17,14 +17,12 @@ import java.util.List;
 
     public long insert(NetworkLog networkLog) {
         ContentValues values = getContentValues(networkLog);
-        values.remove("id");
         return insert(DBConstant.TABLE_LOG, null, values);
     }
 
 
     public void update(NetworkLog networkLog) {
         ContentValues cv = getContentValues(networkLog);
-        cv.remove("id");
         update(DBConstant.TABLE_LOG, cv, "id = ?", new String[]{networkLog.getId() + ""});
     }
 
@@ -70,7 +68,7 @@ import java.util.List;
 
     private ContentValues getContentValues(NetworkLog log) {
         ContentValues cv = new ContentValues();
-        cv.put("ID", log.getId());
+//        cv.put("ID", log.getId());
         cv.put("REQUEST_TYPE", log.getRequestType());
         cv.put("URL", log.getUrl());
         cv.put("DATE", log.getDate());

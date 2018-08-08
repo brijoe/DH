@@ -6,8 +6,8 @@ class DBConstant {
     public static final int VERSION = 1;
 
     public static final String SQL =
-            "CREATE TABLE IF NOT EXISTS " + TABLE_LOG + " ( ID INT PRIMARY KEY NOT NULL," +
-                    "REQUEST_TYPE          TEXT NOT NULL," +
+            "CREATE TABLE IF NOT EXISTS " + TABLE_LOG + " ( ID INTEGER PRIMARY KEY  AUTOINCREMENT," +
+                    "REQUEST_TYPE  TEXT NOT NULL," +
                     "URL INT NOT NULL," +
                     "DATE TEXT NOT NULL," +
                     "REQUEST_HEADERS TEXT NOT NULL," +
