@@ -21,7 +21,7 @@ import retrofit2.Response;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private EmployeeAdapter adapter;
-    private Button btnSend;
+    private Button btnSend, btnBlock;
     private RecyclerView recyclerView;
 
     @Override
@@ -32,9 +32,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
-        btnSend = (Button) findViewById(R.id.btnSend);
+        btnSend = (Button) findViewById(R.id.btn_send);
+        btnBlock = findViewById(R.id.btn_block);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_employee_list);
         btnSend.setOnClickListener(this);
+        btnBlock.setOnClickListener(this);
     }
 
 
@@ -67,9 +69,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnSend:
+            case R.id.btn_send:
                 sendReq();
                 break;
+            case R.id.btn_block:
+                block();
+                break;
+        }
+    }
+
+    private void block() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:paddingBottom="10dp"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/tv_block_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/color_e8b25a"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        tools:text="2018-1-1 00:00:00" />
+
+    <TextView
+        android:id="@+id/tv_block_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:textColor="#ffffff"
+        tools:text="https://www.google.com" />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package io.github.brijoe;
+package io.github.brijoe.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
- class BaseRepository<T> {
+public class BaseRepository<T> {
     protected DBHelper dbHelper;
 
     public BaseRepository(Context context) {

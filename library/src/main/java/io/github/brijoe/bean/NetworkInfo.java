@@ -1,10 +1,10 @@
-package io.github.brijoe;
+package io.github.brijoe.bean;
 
 import java.io.Serializable;
 import java.util.Locale;
 
 
- class NetworkLog  implements Serializable{
+public class NetworkInfo implements Serializable{
 
     private static final long serialVersionUID = 666L;
 
@@ -22,7 +22,7 @@ import java.util.Locale;
 
 
 
-    public NetworkLog() {
+    public NetworkInfo() {
     }
 
     public Long getId() {

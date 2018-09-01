@@ -1,4 +1,4 @@
-package io.github.brijoe;
+package io.github.brijoe.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,8 +14,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import io.github.brijoe.tool.DeviceHelper;
+import io.github.brijoe.R;
+import io.github.brijoe.bean.NetworkInfo;
 
-public class LogDetailActivity extends Activity {
+
+public class HttpDetailActivity extends Activity {
 
     private TextView date, url, code, latency, requestHeaders, responseHeaders, postData, response;
 
@@ -24,12 +28,12 @@ public class LogDetailActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_detail);
+        setContentView(R.layout.activity_http_detail);
         init();
     }
 
     private void init() {
-        final NetworkLog networkLog = (NetworkLog) getIntent().getSerializableExtra("networkLog");
+        final NetworkInfo networkLog = (NetworkInfo) getIntent().getSerializableExtra("networkLog");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
         date = findViewById(R.id.date);
@@ -56,7 +60,7 @@ public class LogDetailActivity extends Activity {
         if (!TextUtils.isEmpty(networkLog.getPostData()))
             postData.setText(networkLog.getPostData());
         if (!TextUtils.isEmpty(networkLog.getResponseData()))
-            response.setText(DHTool.formatJson(networkLog.getResponseData()));
+            response.setText(DeviceHelper.formatJson(networkLog.getResponseData()));
 
         if (networkLog.getResponseCode().startsWith("2")) {
             status.setBackgroundColor(Color.GREEN);

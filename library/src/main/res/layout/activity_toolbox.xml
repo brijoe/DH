@@ -65,7 +65,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvPageName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvPageIntent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvCaller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                     android:textColor="#ffffff"
                     android:textSize="16sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvPkgName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="16sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvAppVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                     android:textSize="14sp" />
 
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvSignMd5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvSignSha1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -209,7 +209,7 @@
                     android:textSize="14sp" />
 
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvSignSha256"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -240,7 +240,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvProcId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -258,7 +258,7 @@
                     android:textSize="14sp" />
 
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvProcMemory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -290,7 +290,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvOSversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -306,7 +306,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvModel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -322,7 +322,7 @@
                     android:textColor="@color/color_ffffff"
                     android:textSize="14sp" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvResolution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -339,7 +339,7 @@
                     android:textSize="14sp" />
 
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/tvDensity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

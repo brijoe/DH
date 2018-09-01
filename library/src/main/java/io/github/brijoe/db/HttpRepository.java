@@ -1,4 +1,4 @@
-package io.github.brijoe;
+package io.github.brijoe.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,37 +7,39 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
- class LogRepository extends BaseRepository<NetworkLog> {
+import io.github.brijoe.bean.NetworkInfo;
+
+public class HttpRepository extends BaseRepository<NetworkInfo> {
 
 
-    public LogRepository(Context context) {
+    public HttpRepository(Context context) {
         super(context);
     }
 
 
-    public long insert(NetworkLog networkLog) {
+    public long insert(NetworkInfo networkLog) {
         ContentValues values = getContentValues(networkLog);
-        return insert(DBConstant.TABLE_LOG, null, values);
+        return insert(DBConstant.TABLE_HTTP, null, values);
     }
 
 
-    public void update(NetworkLog networkLog) {
+    public void update(NetworkInfo networkLog) {
         ContentValues cv = getContentValues(networkLog);
-        update(DBConstant.TABLE_LOG, cv, "id = ?", new String[]{networkLog.getId() + ""});
+        update(DBConstant.TABLE_HTTP, cv, "id = ?", new String[]{networkLog.getId() + ""});
     }
 
 
     public void delete(int id) {
-        delete(DBConstant.TABLE_LOG, "id = ?", new String[]{id + ""});
+        delete(DBConstant.TABLE_HTTP, "id = ?", new String[]{id + ""});
     }
 
     public void deleteAll() {
-        delete(DBConstant.TABLE_LOG,"",null);
+        delete(DBConstant.TABLE_HTTP,"",null);
     }
 
 
-    public List<NetworkLog> readAllLogs() {
-        List<NetworkLog> list = query(DBConstant.TABLE_LOG, null, null, null, null, null, "ID DESC", null);
+    public List<NetworkInfo> readAllLogs() {
+        List<NetworkInfo> list = query(DBConstant.TABLE_HTTP, null, null, null, null, null, "ID DESC", null);
         if (list != null && !list.isEmpty()) {
             return list;
         }
@@ -45,11 +47,11 @@ import java.util.List;
     }
 
     @Override
-    public List<NetworkLog> queryResult(Cursor cursor) {
-        List<NetworkLog> logList = new ArrayList<>();
-        NetworkLog log;
+    public List<NetworkInfo> queryResult(Cursor cursor) {
+        List<NetworkInfo> logList = new ArrayList<>();
+        NetworkInfo log;
         while (cursor.moveToNext()) {
-            log = new NetworkLog();
+            log = new NetworkInfo();
             log.setId(cursor.getLong(cursor.getColumnIndex("ID")));
             log.setRequestType(cursor.getString(cursor.getColumnIndex("REQUEST_TYPE")));
             log.setUrl(cursor.getString(cursor.getColumnIndex("URL")));
@@ -66,7 +68,7 @@ import java.util.List;
         return logList;
     }
 
-    private ContentValues getContentValues(NetworkLog log) {
+    private ContentValues getContentValues(NetworkInfo log) {
         ContentValues cv = new ContentValues();
 //        cv.put("ID", log.getId());
         cv.put("REQUEST_TYPE", log.getRequestType());

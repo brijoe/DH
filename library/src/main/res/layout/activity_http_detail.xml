@@ -80,7 +80,7 @@
                     android:layout_marginRight="8dp"
                     android:textColor="@color/color_ffffff" />
 
-                <io.github.brijoe.CopyText
+                <io.github.brijoe.ui.view.CopyText
                     android:id="@+id/url"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                 android:textColor="@color/color_e8b25a"
                 android:textSize="25sp" />
 
-            <io.github.brijoe.CopyText
+            <io.github.brijoe.ui.view.CopyText
                 android:id="@+id/tv_request_headers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
                 android:layout_height="1dp"
                 android:background="@color/color_ffffff" />
 
-            <io.github.brijoe.CopyText
+            <io.github.brijoe.ui.view.CopyText
                 android:id="@+id/headers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -217,7 +217,7 @@
                 android:layout_height="1dp"
                 android:background="@color/color_ffffff" />
 
-            <io.github.brijoe.CopyText
+            <io.github.brijoe.ui.view.CopyText
                 android:id="@+id/postData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -249,7 +249,7 @@
                 android:background="@color/color_ffffff" />
 
 
-            <io.github.brijoe.CopyText
+            <io.github.brijoe.ui.view.CopyText
                 android:id="@+id/response"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

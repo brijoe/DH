@@ -1,10 +1,10 @@
-package io.github.brijoe;
+package io.github.brijoe.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper {
     private Context context;
     private int dbVersion;
 
@@ -22,7 +22,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void upgradeSqlData(SQLiteDatabase db, int version, boolean isDowngrade) {
-        db.execSQL(DBConstant.SQL);
+        db.execSQL(DBConstant.BLOCK_SQL);
+        db.execSQL(DBConstant.HTTP_SQL);
     }
 
     @Override

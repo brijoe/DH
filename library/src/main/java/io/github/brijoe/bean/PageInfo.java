@@ -1,8 +1,8 @@
-package io.github.brijoe;
+package io.github.brijoe.bean;
 
 import java.io.Serializable;
 
-class PageInfo implements Serializable {
+public class PageInfo implements Serializable {
 
 
     private String pageName;

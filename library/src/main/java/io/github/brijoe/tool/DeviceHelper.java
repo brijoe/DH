@@ -1,5 +1,5 @@
 
-package io.github.brijoe;
+package io.github.brijoe.tool;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -27,8 +27,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.List;
 
+import io.github.brijoe.R;
 
-class DHTool {
+
+public class DeviceHelper {
 
     private static final String TAG = "DH";
 

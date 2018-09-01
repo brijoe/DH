@@ -3,13 +3,19 @@
 
     <application>
         <activity
-            android:name="io.github.brijoe.LogActivity"
+            android:name=".ui.HttpActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="io.github.brijoe.LogDetailActivity"
+            android:name=".ui.HttpDetailActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="io.github.brijoe.ToolBoxActivity"
+            android:name=".ui.BlockActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".ui.BlockDetailActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".ui.ToolBoxActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 </manifest>

@@ -1,7 +1,7 @@
-package io.github.brijoe;
+package io.github.brijoe.bean;
 
 
-class DHInfo {
+public class DHInfo {
 
     private static PageInfo sPageInfo;
     private static AppInfo sAppInfo;

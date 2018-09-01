@@ -1,8 +1,8 @@
-package io.github.brijoe;
+package io.github.brijoe.db;
 
 import android.content.Context;
 
- class DBInterface {
+public class DBInterface {
     private static DBInterface instance;
     private static DBHelper dbHelper;
     private DBInterface() {

@@ -4,6 +4,8 @@ package io.github.brijoe;
 import java.io.IOException;
 import java.util.Date;
 
+import io.github.brijoe.bean.NetworkInfo;
+import io.github.brijoe.db.HttpRepository;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -19,7 +21,7 @@ import okio.Buffer;
  */
 public final class DHInterceptor implements Interceptor {
 
-    LogRepository logRepository = new LogRepository(DH.getContext());
+    HttpRepository logRepository = new HttpRepository(DH.getContext());
 
     private final String TAG="DHInterceptor";
 
@@ -35,7 +37,7 @@ public final class DHInterceptor implements Interceptor {
         Response response = chain.proceed(request);
         long t2 = System.nanoTime();
 
-        NetworkLog networkLog = new NetworkLog();
+        NetworkInfo networkLog = new NetworkInfo();
 //        networkLog.setId(getRequestId());
         networkLog.setDate(new Date().getTime());
         networkLog.setDuration((t2 - t1) / 1e6d);

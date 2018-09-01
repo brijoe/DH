@@ -1,6 +1,6 @@
-package io.github.brijoe;
+package io.github.brijoe.bean;
 
-class AppInfo {
+public class AppInfo {
     private String pkgName;
     private String version;
 

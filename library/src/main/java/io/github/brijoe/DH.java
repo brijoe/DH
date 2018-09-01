@@ -9,6 +9,18 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.brijoe.bean.AppInfo;
+import io.github.brijoe.bean.DHInfo;
+import io.github.brijoe.bean.DeviceInfo;
+import io.github.brijoe.bean.PageInfo;
+import io.github.brijoe.bean.ProcessInfo;
+import io.github.brijoe.block.BlockWatcher;
+import io.github.brijoe.tool.DeviceHelper;
+import io.github.brijoe.tool.SensorHelper;
+import io.github.brijoe.ui.HttpActivity;
+import io.github.brijoe.ui.HttpDetailActivity;
+import io.github.brijoe.ui.ToolBoxActivity;
+
 /**
  * DH tools,a development tools library for Android.
  *
@@ -23,9 +35,10 @@ public final class DH {
 
     private static int mActivityCount = 0;
 
-    private static boolean mEnabled =true;
+    private static boolean mEnabled = true;
 
-    private DH() { }
+    private DH() {
+    }
 
 
     /**
@@ -34,31 +47,34 @@ public final class DH {
      * @param context Application context
      */
 
-    public static void  install(Context context) {
-       install(context,true);
+    public static void install(Context context) {
+        install(context, true);
     }
 
     /**
      * Start watching activity references (on ICS+),the enable flag is controlled by caller.
+     *
      * @param context Application context
      * @param enabled whether the DH library is enabled or not.
      */
-    public static void install(Context context,boolean enabled){
+    public static void install(Context context, boolean enabled) {
         if (context == null || !(context instanceof Application))
             throw new IllegalArgumentException("context must be application context");
         mContext = context;
-        mEnabled =enabled;
-       if(enabled)
+        mEnabled = enabled;
+        if (enabled) {
             ((Application) context).registerActivityLifecycleCallbacks(lifecycleCallbacks);
+            BlockWatcher.start();
+        }
 
     }
 
-    protected static Context getContext() {
+    public static Context getContext() {
 
         return mContext;
     }
 
-    protected static boolean getEnabled(){
+    protected static boolean getEnabled() {
         return mEnabled;
     }
 
@@ -89,7 +105,7 @@ public final class DH {
 
     }
 
-    protected static List<Debugger> getAppendList() {
+    public static List<Debugger> getAppendList() {
         return mAppendList;
     }
 
@@ -143,7 +159,7 @@ public final class DH {
         @Override
         public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
             Log.d(TAG, "onActivitySaveInstanceState: " + activity.toString());
-            if(isInnerActivity(activity))
+            if (isInnerActivity(activity))
                 return;
             SensorHelper.getInstance().destroy();
 
@@ -156,8 +172,8 @@ public final class DH {
     };
 
     private static boolean isInnerActivity(Activity activity) {
-        if (activity instanceof LogActivity
-                || activity instanceof LogDetailActivity
+        if (activity instanceof HttpActivity
+                || activity instanceof HttpDetailActivity
                 || activity instanceof ToolBoxActivity)
             return true;
         return false;
@@ -174,8 +190,8 @@ public final class DH {
             pageInfo.setCaller(activity.getCallingActivity().toString());
         //processInfo
         ProcessInfo processInfo = new ProcessInfo();
-        processInfo.setProName(DHTool.getAppProcessName(activity, DHTool.getAppProcessId()) + "(" + DHTool.getAppProcessId() + ")");
-        processInfo.setFreeMemory(DHTool.getMemory());
+        processInfo.setProName(DeviceHelper.getAppProcessName(activity, DeviceHelper.getAppProcessId()) + "(" + DeviceHelper.getAppProcessId() + ")");
+        processInfo.setFreeMemory(DeviceHelper.getMemory());
 
         DHInfo.setsPageInfo(pageInfo);
         DHInfo.setsProcessInfo(processInfo);
@@ -183,20 +199,20 @@ public final class DH {
         //appInfo
         if (DHInfo.getsAppInfo() == null) {
             AppInfo appInfo = new AppInfo();
-            appInfo.setPkgName(DHTool.getAppPackageName(activity));
-            appInfo.setVersion(DHTool.getAppVersionName(activity) + "(build " + DHTool.getAppVersionCode(activity) + ")");
-            appInfo.setSignMd5(DHTool.getSignMD5(activity));
-            appInfo.setSignSha1(DHTool.getSignSHA1(activity));
-            appInfo.setSignSha256(DHTool.getSignSHA256(activity));
+            appInfo.setPkgName(DeviceHelper.getAppPackageName(activity));
+            appInfo.setVersion(DeviceHelper.getAppVersionName(activity) + "(build " + DeviceHelper.getAppVersionCode(activity) + ")");
+            appInfo.setSignMd5(DeviceHelper.getSignMD5(activity));
+            appInfo.setSignSha1(DeviceHelper.getSignSHA1(activity));
+            appInfo.setSignSha256(DeviceHelper.getSignSHA256(activity));
             DHInfo.setsAppInfo(appInfo);
         }
         //deviceInfo
         if (DHInfo.getsDeviceInfo() == null) {
             DeviceInfo deviceInfo = new DeviceInfo();
-            deviceInfo.setModel(DHTool.getPhoneModel());
-            deviceInfo.setOsVersion(DHTool.getBuildVersion());
-            deviceInfo.setResolution(DHTool.getScreenWidth(activity) + "x" + DHTool.getScreenHeight(activity));
-            deviceInfo.setDensity(DHTool.getDensity(activity));
+            deviceInfo.setModel(DeviceHelper.getPhoneModel());
+            deviceInfo.setOsVersion(DeviceHelper.getBuildVersion());
+            deviceInfo.setResolution(DeviceHelper.getScreenWidth(activity) + "x" + DeviceHelper.getScreenHeight(activity));
+            deviceInfo.setDensity(DeviceHelper.getDensity(activity));
             DHInfo.setsDeviceInfo(deviceInfo);
         }
 

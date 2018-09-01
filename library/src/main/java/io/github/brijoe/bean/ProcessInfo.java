@@ -1,8 +1,8 @@
-package io.github.brijoe;
+package io.github.brijoe.bean;
 
 import java.io.Serializable;
 
-class ProcessInfo implements Serializable {
+public class ProcessInfo implements Serializable {
 
     private String proName;
 

@@ -1,12 +1,15 @@
-package io.github.brijoe;
+package io.github.brijoe.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import io.github.brijoe.bean.DHInfo;
+import io.github.brijoe.R;
 
- public class ToolBoxActivity extends Activity {
+
+public class ToolBoxActivity extends Activity {
 
 
     private TextView mTvPageName, mTvPageIntent;

@@ -1,4 +1,4 @@
-package io.github.brijoe;
+package io.github.brijoe.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,32 +9,36 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public  class LogActivity extends Activity {
+import io.github.brijoe.R;
+import io.github.brijoe.adapter.BlockLogAdapter;
+import io.github.brijoe.bean.BlockInfo;
+import io.github.brijoe.db.BlockRepository;
+
+public class BlockActivity extends Activity {
 
     private ListView mListView;
-    private NetworkLogAdapter mAdapter;
-    private LogRepository mLogRepository;
+    private BlockLogAdapter mAdapter;
+    private BlockRepository mLogRepository;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log);
+        setContentView(R.layout.activity_block);
         init();
     }
 
     private void init() {
-        mListView = (ListView) findViewById(R.id.list_network_logs);
-
-        mLogRepository = new LogRepository(this);
-        final List<NetworkLog> networkLogs = mLogRepository.readAllLogs();
-        mAdapter = new NetworkLogAdapter(this,networkLogs);
+        mListView = (ListView) findViewById(R.id.list_block);
+        mLogRepository = new BlockRepository(this);
+        final List<BlockInfo> blockLogs = mLogRepository.readAllLogs();
+        mAdapter = new BlockLogAdapter(this, blockLogs);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(LogActivity.this
-                        , LogDetailActivity.class);
-                intent.putExtra("networkLog", networkLogs.get(position));
+                Intent intent = new Intent(BlockActivity.this
+                        , BlockDetailActivity.class);
+                intent.putExtra("blockLog", blockLogs.get(position));
                 startActivity(intent);
             }
         });
@@ -60,7 +64,6 @@ public  class LogActivity extends Activity {
                 mAdapter.clear();
             }
         });
-
     }
 
 }

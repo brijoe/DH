@@ -1,4 +1,4 @@
-package io.github.brijoe;
+package io.github.brijoe.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,17 +15,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import io.github.brijoe.R;
+import io.github.brijoe.bean.NetworkInfo;
 
-class NetworkLogAdapter extends BaseAdapter {
 
-    private List<NetworkLog> networkLogList;
+public class HttpLogAdapter extends BaseAdapter {
+
+    private List<NetworkInfo> networkLogList;
 
     private SimpleDateFormat dateFormat;
 
     private Context mContext;
 
 
-    public NetworkLogAdapter(Context context, List<NetworkLog> networkLogs) {
+    public HttpLogAdapter(Context context, List<NetworkInfo> networkLogs) {
         this.mContext=context;
         this.networkLogList = networkLogs;
         dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
@@ -50,9 +53,9 @@ class NetworkLogAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         MyViewHolder holder;
-        NetworkLog networkLog = (NetworkLog) getItem(position);
+        NetworkInfo networkLog = (NetworkInfo) getItem(position);
         if(convertView==null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_log, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_http, null);
             holder = new MyViewHolder();
             holder.date = (TextView) convertView.findViewById(R.id.date);
             holder.url = (TextView) convertView.findViewById(R.id.url);
@@ -85,7 +88,7 @@ class NetworkLogAdapter extends BaseAdapter {
 
     }
 
-    public void flush(List<NetworkLog> networkLogs){
+    public void flush(List<NetworkInfo> networkLogs){
         if(networkLogs==null)
             return;
         networkLogList.clear();

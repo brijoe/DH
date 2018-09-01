@@ -1,4 +1,4 @@
-package io.github.brijoe;
+package io.github.brijoe.tool;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,8 +8,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
+import io.github.brijoe.DH;
+import io.github.brijoe.ui.view.DHDialog;
 
-class SensorHelper implements SensorEventListener {
+
+public class SensorHelper implements SensorEventListener {
 
     private static final int SPEED_THRESHOLD = 5000;
     private static final int UPDATE_INTERVAL_TIME = 50;
@@ -41,11 +44,12 @@ class SensorHelper implements SensorEventListener {
         return mInstance;
     }
 
-    protected void inject(Context context) {
+    public void inject(Context context) {
         mContext = context;
     }
+
     // register sensor
-    protected void register() {
+    public void register() {
 
         if (sensor != null) {
             sensorManager.registerListener(this, sensor,
@@ -54,7 +58,7 @@ class SensorHelper implements SensorEventListener {
     }
 
     // unregister sensor
-    protected void unregister() {
+    public void unregister() {
         sensorManager.unregisterListener(this);
     }
 
@@ -90,14 +94,15 @@ class SensorHelper implements SensorEventListener {
     private void showDebugDialog() {
         Log.d(TAG, "showDialog");
         if (!((Activity) mContext).isFinishing()) {
-            if(mDialog!=null&&mDialog.isShowing())
+            if (mDialog != null && mDialog.isShowing())
                 return;
             mDialog = new DHDialog(mContext);
             mDialog.show();
         }
     }
-    protected void destroy() {
+
+    public void destroy() {
         Log.d(TAG, "SensorHelper destroy dialog");
-        mDialog=null;
+        mDialog = null;
     }
 }

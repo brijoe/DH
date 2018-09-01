@@ -1,8 +1,8 @@
-package io.github.brijoe;
+package io.github.brijoe.bean;
 
 import java.io.Serializable;
 
-class DeviceInfo implements Serializable {
+public class DeviceInfo implements Serializable {
     private String model;
     private String osVersion;
     private String resolution;
