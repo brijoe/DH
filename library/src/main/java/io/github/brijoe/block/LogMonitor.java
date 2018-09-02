@@ -14,12 +14,12 @@ import io.github.brijoe.db.BlockRepository;
 class LogMonitor implements BlockWatcher.BlockCallback {
     private BlockRepository logRepository = new BlockRepository(DH.getContext());
     private HandlerThread mLogThread = new HandlerThread("Block-log");
-    private Handler mIoHandler;
+    private Handler mLogHandler;
     private final int MSG_BLOCK_WHAT = 0x01;
 
     private LogMonitor() {
         mLogThread.start();
-        mIoHandler = new Handler(mLogThread.getLooper()) {
+        mLogHandler = new Handler(mLogThread.getLooper()) {
 
             @Override
             public void handleMessage(Message msg) {
@@ -71,10 +71,7 @@ class LogMonitor implements BlockWatcher.BlockCallback {
 
     @Override
     public void onFrameBlock(long frameDiff) {
-        Message message = Message.obtain();
-        message.what = MSG_BLOCK_WHAT;
-        message.obj = frameDiff;
-        mIoHandler.sendMessage(message);
+        Message.obtain(mLogHandler,MSG_BLOCK_WHAT,frameDiff).sendToTarget();
     }
 
     @Override

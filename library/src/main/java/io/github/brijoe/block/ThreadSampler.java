@@ -27,7 +27,6 @@ class ThreadSampler implements BlockWatcher.BlockCallback {
     private Handler mSampleHandler;
 
     private void recordThreadTrace() {
-        Log.e("DH", System.currentTimeMillis() + "采样");
         StackTraceElement[] stackTrace = Looper.getMainLooper().getThread().getStackTrace();
         traceList.add(stackTrace);
     }
@@ -59,15 +58,12 @@ class ThreadSampler implements BlockWatcher.BlockCallback {
         //start main thread stacktrace
         if (!isSampleStart) {
             //have not started yet,start immediately
-            Message msg = Message.obtain();
-            msg.what = MSG_SAMPLE_PERIOD;
-            mSampleHandler.sendMessage(msg);
+            Message.obtain(mSampleHandler,MSG_SAMPLE_PERIOD).sendToTarget();
             isSampleStart = true;
         } else {
             //if started, sample immediately
-            Message msg = Message.obtain();
-            msg.what = MSG_SAMPLE_ONCE;
-            mSampleHandler.sendMessage(msg);
+            Message.obtain(mSampleHandler,MSG_SAMPLE_ONCE).sendToTarget();
+
         }
     }
 
