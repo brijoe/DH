@@ -5,7 +5,8 @@ import java.io.Serializable;
 public class BlockInfo implements Serializable {
 
     private long id;
-    private long time;
+    private long timeRecord;
+    private long timeCost;
     private int traceCount;
     private String traces;
 
@@ -17,12 +18,20 @@ public class BlockInfo implements Serializable {
         this.id = id;
     }
 
-    public long getTime() {
-        return time;
+    public long getTimeRecord() {
+        return timeRecord;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setTimeRecord(long time) {
+        this.timeRecord = time;
+    }
+
+    public long getTimeCost() {
+        return timeCost;
+    }
+
+    public void setTimeCost(long timeCost) {
+        this.timeCost = timeCost;
     }
 
     public int getTraceCount() {

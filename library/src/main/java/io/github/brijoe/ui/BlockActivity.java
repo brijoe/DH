@@ -1,6 +1,5 @@
 package io.github.brijoe.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,7 @@ import io.github.brijoe.adapter.BlockLogAdapter;
 import io.github.brijoe.bean.BlockInfo;
 import io.github.brijoe.db.BlockRepository;
 
-public class BlockActivity extends Activity {
+public class BlockActivity extends DHBaseActivity {
 
     private ListView mListView;
     private BlockLogAdapter mAdapter;

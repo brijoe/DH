@@ -20,7 +20,7 @@ import io.github.brijoe.bean.BlockInfo;
 import io.github.brijoe.tool.DeviceHelper;
 
 
-public class BlockDetailActivity extends Activity {
+public class BlockDetailActivity extends DHBaseActivity {
 
     private TextView mStackTraces;
 

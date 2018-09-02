@@ -16,27 +16,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        for(int i = 1; i <= this.dbVersion; ++i) {
-            this.upgradeSqlData(db, i, false);
-        }
-    }
-
-    private void upgradeSqlData(SQLiteDatabase db, int version, boolean isDowngrade) {
         db.execSQL(DBConstant.BLOCK_SQL);
         db.execSQL(DBConstant.HTTP_SQL);
     }
 
+    private void clearData(SQLiteDatabase db) {
+        db.execSQL(DBConstant.HTTP_CLEAR_SQL);
+        db.execSQL(DBConstant.BLOCK_CLEAR_SQL);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        for(int i = oldVersion + 1; i <= newVersion; ++i) {
-            this.upgradeSqlData(db, i, false);
-        }
+        clearData(db);
     }
 
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        for(int i = oldVersion - 1; i >= newVersion; --i) {
-            this.upgradeSqlData(db, i, false);
-        }
+        clearData(db);
 
     }
 }

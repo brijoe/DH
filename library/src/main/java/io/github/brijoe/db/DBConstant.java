@@ -6,6 +6,12 @@ public class DBConstant {
     public static final String TABLE_BLOCK = "BLOCK";
     public static final int VERSION = 2;
 
+
+    public static final String BLOCK_CLEAR_SQL = "DROP TABLE IF EXISTS " + TABLE_BLOCK;
+
+    public static final String HTTP_CLEAR_SQL = "DROP TABLE IF EXISTS " + TABLE_HTTP;
+
+
     public static final String HTTP_SQL =
             "CREATE TABLE IF NOT EXISTS " + TABLE_HTTP + " ( ID INTEGER PRIMARY KEY  AUTOINCREMENT," +
                     "REQUEST_TYPE  TEXT NOT NULL," +
@@ -22,6 +28,7 @@ public class DBConstant {
     public static final String BLOCK_SQL =
             "CREATE TABLE IF NOT EXISTS " + TABLE_BLOCK + " ( ID INTEGER PRIMARY KEY  AUTOINCREMENT," +
                     "DATE TEXT NOT NULL," +
+                    "TIME_COST TEXT," +
                     "TRACE_COUNT INT," +
                     "TRACE_CONTENT TEXT)";
 }

@@ -17,9 +17,7 @@ import io.github.brijoe.bean.ProcessInfo;
 import io.github.brijoe.block.BlockWatcher;
 import io.github.brijoe.tool.DeviceHelper;
 import io.github.brijoe.tool.SensorHelper;
-import io.github.brijoe.ui.HttpActivity;
-import io.github.brijoe.ui.HttpDetailActivity;
-import io.github.brijoe.ui.ToolBoxActivity;
+import io.github.brijoe.ui.DHBaseActivity;
 
 /**
  * DH tools,a development tools library for Android.
@@ -64,7 +62,7 @@ public final class DH {
         mEnabled = enabled;
         if (enabled) {
             ((Application) context).registerActivityLifecycleCallbacks(lifecycleCallbacks);
-            BlockWatcher.start();
+            BlockWatcher.init();
         }
 
     }
@@ -172,11 +170,7 @@ public final class DH {
     };
 
     private static boolean isInnerActivity(Activity activity) {
-        if (activity instanceof HttpActivity
-                || activity instanceof HttpDetailActivity
-                || activity instanceof ToolBoxActivity)
-            return true;
-        return false;
+        return activity instanceof DHBaseActivity;
     }
 
     private static void dump(Activity activity) {

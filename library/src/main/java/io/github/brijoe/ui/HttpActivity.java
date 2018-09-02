@@ -14,7 +14,7 @@ import io.github.brijoe.adapter.HttpLogAdapter;
 import io.github.brijoe.R;
 import io.github.brijoe.bean.NetworkInfo;
 
-public  class HttpActivity extends Activity {
+public  class HttpActivity extends DHBaseActivity {
 
     private ListView mListView;
     private HttpLogAdapter mAdapter;

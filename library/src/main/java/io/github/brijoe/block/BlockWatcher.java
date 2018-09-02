@@ -2,42 +2,66 @@ package io.github.brijoe.block;
 
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.util.Log;
 import android.view.Choreographer;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class BlockWatcher {
+public final class BlockWatcher {
 
     private static final String TAG = "BlockWatcher";
 
+    private static final long TIME_BLOCK = 256;
     private static long lastFrameTimeNanos = 0;
 
+    public interface BlockCallback {
+        void onFrameStart(long frameTimeNanos);
+        void onFrameBlock(long frameDiff);
+        void onFrameSmooth();
+    }
+    private static List<BlockCallback> mBlockCallbacks =new ArrayList<>();
+
+    public static void init(){
+        mBlockCallbacks.add(ThreadSampler.getInstance());
+        mBlockCallbacks.add(LogMonitor.getInstance());
+        start();
+    }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public static void start() {
+    private static void start() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
             return;
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
 
             @Override
             public void doFrame(long frameTimeNanos) {
-                if(lastFrameTimeNanos!=0) {
-                    //计算掉帧数
+                Choreographer.getInstance().postFrameCallback(this);
+                for(BlockCallback callback:mBlockCallbacks)
+                    if(callback!=null) {
+                        callback.onFrameStart(frameTimeNanos);
+                    }
+                if (lastFrameTimeNanos != 0) {
                     long diffMs = TimeUnit.MILLISECONDS.convert(
                             frameTimeNanos - lastFrameTimeNanos, TimeUnit.NANOSECONDS);
-                    if (diffMs > 16.6f) {
-                        //掉帧数统计
-                        int droppedCount = (int) (diffMs / 16.6);
-                        Log.e(TAG, "掉帧数" + droppedCount);
+                    //frame callback time more than threshold
+                    if (diffMs > TIME_BLOCK) {
+                        for(BlockCallback callback:mBlockCallbacks)
+                            if(callback!=null) {
+                                callback.onFrameBlock(diffMs);
+                            }
+                    }
+                    //frame smooth
+                    else{
+                        for(BlockCallback callback:mBlockCallbacks)
+                            if(callback!=null) {
+                                callback.onFrameSmooth();
+                            }
                     }
                 }
-                lastFrameTimeNanos = frameTimeNanos;
-                //监控中移除
-                if (LogMonitor.getInstance().isMonitor()) {
-                    LogMonitor.getInstance().removeMonitor();
+                else{
+
                 }
-                LogMonitor.getInstance().startMonitor();
-                Choreographer.getInstance().postFrameCallback(this);
+                lastFrameTimeNanos = frameTimeNanos;
             }
         });
     }

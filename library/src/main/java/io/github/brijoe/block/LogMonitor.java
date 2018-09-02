@@ -5,69 +5,80 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
 
-import java.util.Date;
 import java.util.List;
 
 import io.github.brijoe.DH;
 import io.github.brijoe.bean.BlockInfo;
 import io.github.brijoe.db.BlockRepository;
 
-class LogMonitor {
-
-    private static BlockRepository logRepository = new BlockRepository(DH.getContext());
-    private static LogMonitor sInstance = new LogMonitor();
+class LogMonitor implements BlockWatcher.BlockCallback {
+    private BlockRepository logRepository = new BlockRepository(DH.getContext());
     private HandlerThread mLogThread = new HandlerThread("Block-log");
     private Handler mIoHandler;
-    private static final long TIME_BLOCK = 256;
-
-    private int MSG_BLOCK_WHAT = 0x01;
+    private final int MSG_BLOCK_WHAT = 0x01;
 
     private LogMonitor() {
         mLogThread.start();
-        mIoHandler = new Handler(mLogThread.getLooper());
-    }
+        mIoHandler = new Handler(mLogThread.getLooper()) {
 
-    private Runnable mLogRunnable = new Runnable() {
-        @Override
-        public void run() {
-            //block occur,print main thread stack trace
-            List<StackTraceElement[]> result = ThreadSampler.getInstance().getTraceInfo();
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < result.size(); i++) {
-                sb.append(">>>>>>>>>第[" + i + "]条堆栈<<<<<<<<<\n");
-                for (StackTraceElement s : result.get(i)) {
-                    sb.append(s.toString() + "\n");
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case MSG_BLOCK_WHAT:
+                        dumpWhenBlock((long) msg.obj);
+                        break;
                 }
             }
-            Log.e("BlockWatcher",
-                    String.format("------发生卡顿[%d]条堆栈信息-----\n", result.size()));
-            //insert log
-            BlockInfo blockInfo = new BlockInfo();
-            blockInfo.setTime(new Date().getTime());
-            blockInfo.setTraceCount(result.size());
-            blockInfo.setTraces(sb.toString());
-            logRepository.insert(blockInfo);
-
+        };
+    }
+    private void dumpWhenBlock(long blockTime) {
+        //block occur,print main thread stack trace
+        List<StackTraceElement[]> result = ThreadSampler.getInstance().getTraceInfo();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < result.size(); i++) {
+            sb.append(">>>>>>>>>>>>>>第[" + (i+1) + "]条堆栈<<<<<<<<<<<<<<\n");
+            for (StackTraceElement s : result.get(i)) {
+                sb.append(s.toString() + "\n");
+            }
+            sb.append("\n\n");
         }
-    };
+        Log.e("DH",
+                String.format("------发生卡顿[%d]条堆栈信息-----\n", result.size()));
+        //insert log
+        BlockInfo blockInfo = new BlockInfo();
+        blockInfo.setTimeRecord(System.currentTimeMillis());
+        blockInfo.setTimeCost(blockTime);
+        blockInfo.setTraceCount(result.size());
+        blockInfo.setTraces(sb.toString());
+        logRepository.insert(blockInfo);
+
+
+    }
+
+    private static class LogMonitorHolder {
+        public static LogMonitor mInstance = new LogMonitor();
+    }
 
     public static LogMonitor getInstance() {
-        return sInstance;
+        return LogMonitorHolder.mInstance;
     }
 
-    public boolean isMonitor() {
-        return mIoHandler.hasMessages(MSG_BLOCK_WHAT);
+
+    @Override
+    public void onFrameStart(long frameTimeNanos) {
+        //do nothing
     }
 
-    public void startMonitor() {
-        ThreadSampler.getInstance().start();
-        Message message = Message.obtain(mIoHandler, mLogRunnable);
+    @Override
+    public void onFrameBlock(long frameDiff) {
+        Message message = Message.obtain();
         message.what = MSG_BLOCK_WHAT;
-        mIoHandler.sendMessageDelayed(message, TIME_BLOCK);
+        message.obj = frameDiff;
+        mIoHandler.sendMessage(message);
     }
 
-    public void removeMonitor() {
-        mIoHandler.removeMessages(MSG_BLOCK_WHAT);
-        ThreadSampler.getInstance().stop();
+    @Override
+    public void onFrameSmooth() {
+    //do nothing
     }
 }

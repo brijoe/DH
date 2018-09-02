@@ -54,19 +54,21 @@ public class BlockLogAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_block, null);
             holder = new MyViewHolder();
-            holder.time = convertView.findViewById(R.id.tv_block_time);
-            holder.count=convertView.findViewById(R.id.tv_block_count);
+            holder.timeRecord = convertView.findViewById(R.id.tv_block_time);
+            holder.timeCost = convertView.findViewById(R.id.tv_block_cost);
+            holder.count = convertView.findViewById(R.id.tv_block_count);
             convertView.setTag(holder);
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
-        holder.time.setText(dateFormat.format(new Date(blockInfo.getTime())));
+        holder.timeRecord.setText(dateFormat.format(new Date(blockInfo.getTimeRecord())));
+        holder.timeCost.setText(blockInfo.getTimeCost() + "ms");
         holder.count.setText("搜集到[" + blockInfo.getTraceCount() + "]条堆栈信息 ");
         return convertView;
     }
 
     private class MyViewHolder {
-        TextView time, count;
+        TextView timeRecord, timeCost, count;
     }
 
     public void flush(List<BlockInfo> blockList) {

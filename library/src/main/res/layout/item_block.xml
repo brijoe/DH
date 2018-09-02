@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#000000"
     android:paddingBottom="10dp"
-    android:orientation="vertical"
     android:paddingTop="10dp">
 
     <TextView
@@ -22,8 +21,19 @@
         android:id="@+id/tv_block_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_block_time"
         android:layout_marginLeft="16dp"
         android:textColor="#ffffff"
         tools:text="https://www.google.com" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_block_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:textColor="#DE2121"
+        tools:text="300ms" />
+
+</RelativeLayout>

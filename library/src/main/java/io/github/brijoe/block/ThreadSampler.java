@@ -3,6 +3,8 @@ package io.github.brijoe.block;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,34 +15,71 @@ import java.util.List;
  */
 
 
- class ThreadSampler {
+class ThreadSampler implements BlockWatcher.BlockCallback {
 
-    //监控采样频率为52ms
     private long SAMPLE_RATE = 52;
-
+    private final int MSG_SAMPLE_ONCE = 0x01;
+    private final int MSG_SAMPLE_PERIOD = 0x02;
     private List<StackTraceElement[]> traceList = Collections.synchronizedList(
             new ArrayList<StackTraceElement[]>());
 
-    private HandlerThread mThread = new HandlerThread("sampler");
-
-    private Handler mHandler;
-    private Runnable mSampleRunnable = new Runnable() {
-        @Override
-        public void run() {
-            mHandler.postDelayed(mSampleRunnable, SAMPLE_RATE);
-            recordThreadTrace();
-        }
-    };
+    private HandlerThread mSampleThread = new HandlerThread("sampler");
+    private Handler mSampleHandler;
 
     private void recordThreadTrace() {
-        //采集并记录堆栈
+        Log.e("DH", System.currentTimeMillis() + "采样");
         StackTraceElement[] stackTrace = Looper.getMainLooper().getThread().getStackTrace();
         traceList.add(stackTrace);
     }
 
     private ThreadSampler() {
-        mThread.start();
-        mHandler = new Handler(mThread.getLooper());
+        mSampleThread.start();
+        mSampleHandler = new Handler(mSampleThread.getLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case MSG_SAMPLE_PERIOD:
+                        Message message = Message.obtain();
+                        message.what = MSG_SAMPLE_PERIOD;
+                        mSampleHandler.sendMessageDelayed(message, SAMPLE_RATE);
+                        recordThreadTrace();
+                        break;
+                    case MSG_SAMPLE_ONCE:
+                        recordThreadTrace();
+                        break;
+                }
+            }
+        };
+    }
+
+    private boolean isSampleStart = false;
+
+    @Override
+    public void onFrameStart(long frameTimeNanos) {
+        //start main thread stacktrace
+        if (!isSampleStart) {
+            //have not started yet,start immediately
+            Message msg = Message.obtain();
+            msg.what = MSG_SAMPLE_PERIOD;
+            mSampleHandler.sendMessage(msg);
+            isSampleStart = true;
+        } else {
+            //if started, sample immediately
+            Message msg = Message.obtain();
+            msg.what = MSG_SAMPLE_ONCE;
+            mSampleHandler.sendMessage(msg);
+        }
+    }
+
+    @Override
+    public void onFrameBlock(long frameDiff) {
+
+    }
+
+    @Override
+    public void onFrameSmooth() {
+        traceList.clear();
+
     }
 
 
@@ -53,20 +92,9 @@ import java.util.List;
         return ThreadSamplerHolder.mInstance;
     }
 
-    //启动高频采样
-    public void start() {
-        traceList.clear();
-        mHandler.post(mSampleRunnable);
-    }
-
-    public void stop() {
-        mHandler.removeCallbacks(mSampleRunnable);
-    }
 
     //获取内存中的采样结果
     public List<StackTraceElement[]> getTraceInfo() {
         return new ArrayList<>(traceList);
     }
-
-
 }

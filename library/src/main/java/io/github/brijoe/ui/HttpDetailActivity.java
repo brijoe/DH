@@ -1,6 +1,5 @@
 package io.github.brijoe.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,12 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import io.github.brijoe.tool.DeviceHelper;
 import io.github.brijoe.R;
 import io.github.brijoe.bean.NetworkInfo;
+import io.github.brijoe.tool.DeviceHelper;
 
 
-public class HttpDetailActivity extends Activity {
+public class HttpDetailActivity extends DHBaseActivity {
 
     private TextView date, url, code, latency, requestHeaders, responseHeaders, postData, response;
 

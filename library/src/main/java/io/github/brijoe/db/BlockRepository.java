@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.brijoe.bean.BlockInfo;
-import io.github.brijoe.bean.NetworkInfo;
 
 public class BlockRepository extends BaseRepository<BlockInfo> {
 
@@ -44,7 +43,8 @@ public class BlockRepository extends BaseRepository<BlockInfo> {
         while (cursor.moveToNext()) {
             log = new BlockInfo();
             log.setId(cursor.getLong(cursor.getColumnIndex("ID")));
-            log.setTime(cursor.getLong(cursor.getColumnIndex("DATE")));
+            log.setTimeRecord(cursor.getLong(cursor.getColumnIndex("DATE")));
+            log.setTimeCost(cursor.getLong(cursor.getColumnIndex("TIME_COST")));
             log.setTraceCount(cursor.getInt(cursor.getColumnIndex("TRACE_COUNT")));
             log.setTraces(cursor.getString(cursor.getColumnIndex("TRACE_CONTENT")));
             logList.add(log);
@@ -54,7 +54,8 @@ public class BlockRepository extends BaseRepository<BlockInfo> {
 
     private ContentValues getContentValues(BlockInfo log) {
         ContentValues cv = new ContentValues();
-        cv.put("DATE", log.getTime());
+        cv.put("DATE", log.getTimeRecord());
+        cv.put("TIME_COST", log.getTimeCost());
         cv.put("TRACE_COUNT", log.getTraceCount());
         cv.put("TRACE_CONTENT",log.getTraces());
         return cv;
