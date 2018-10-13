@@ -37,6 +37,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_employee_list);
         btnSend.setOnClickListener(this);
         btnBlock.setOnClickListener(this);
+
+        GhostThread.start();
     }
 
 
@@ -79,10 +81,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void block() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        int count=Integer.MAX_VALUE/100;
+        int  i=0;
+        while(i<count){
+            double result=Math.PI*Math.PI*Math.PI;
+            i++;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        GhostThread.stop();
     }
 }

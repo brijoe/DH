@@ -8,6 +8,7 @@
     <string name="developer_options">开发者选项</string>
     <string name="tool_box">ToolBox</string>
     <string name="view_block_info">查看卡顿情况</string>
+    <string name="start_realtime_watch">启动实时观测</string>
     <string name="handle_intent_error">无法打开对应界面，请手动开启</string>
     <string name="network_detail">详情</string>
     <string name="request_latency">请求耗时\t</string>

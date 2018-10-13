@@ -24,7 +24,7 @@ public class BlockRepository extends BaseRepository<BlockInfo> {
 
 
     public void deleteAll() {
-        delete(DBConstant.TABLE_BLOCK,"",null);
+        delete(DBConstant.TABLE_BLOCK, "", null);
     }
 
 
@@ -57,7 +57,7 @@ public class BlockRepository extends BaseRepository<BlockInfo> {
         cv.put("DATE", log.getTimeRecord());
         cv.put("TIME_COST", log.getTimeCost());
         cv.put("TRACE_COUNT", log.getTraceCount());
-        cv.put("TRACE_CONTENT",log.getTraces());
+        cv.put("TRACE_CONTENT", log.getTraces());
         return cv;
     }
 

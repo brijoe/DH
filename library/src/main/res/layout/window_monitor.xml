@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="160dp"
+    android:layout_height="300dp"
+    android:background="@drawable/dh_window_monitor_bg"
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="5dp"
+            android:text="实时监控"
+            android:textColor="@color/color_ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:padding="5dp"
+            android:text="X" />
+
+    </RelativeLayout>
+
+
+    <!--实时帧率:-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实时帧率:"
+            android:textColor="@color/color_ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_fps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50FPS"
+            android:textColor="@color/color_ffffff" />
+    </LinearLayout>
+
+
+    <!--CPU-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CPU 占用率:"
+            android:textColor="@color/color_ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cpu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40.00%"
+            android:textColor="@color/color_ffffff" />
+    </LinearLayout>
+
+
+    <!--内存占用-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内存占用:"
+            android:textColor="@color/color_ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_mem_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000.99M"
+            android:textColor="@color/color_ffffff" />
+
+    </LinearLayout>
+
+    <!--内存占用-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp">
+
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:background="#24668C" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="-1dp"
+            android:text="Java"
+            android:textColor="@color/color_ffffff"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tv_mem_dalvik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="45.99M"
+            android:textColor="@color/color_ffffff"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp">
+
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:background="#173E54"
+            android:textColor="@color/color_ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="-1dp"
+            android:text="Native"
+            android:textColor="@color/color_ffffff"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tv_mem_native"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="1000.99M"
+            android:textColor="@color/color_ffffff"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp">
+
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:background="#3D4C56"
+            android:textColor="@color/color_ffffff" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="-1dp"
+            android:text="Other"
+            android:textColor="@color/color_ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_mem_other"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="1000.99M"
+            android:textColor="@color/color_ffffff"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp">
+
+
+        <!--线程情况-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所有线程"
+            android:textColor="@color/color_ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_thread_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/color_ffffff"
+            tools:text="(11)" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_threads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

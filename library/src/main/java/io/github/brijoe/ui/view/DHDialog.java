@@ -14,6 +14,8 @@ import java.util.List;
 
 import io.github.brijoe.BuildConfig;
 import io.github.brijoe.DH;
+import io.github.brijoe.monitor.MonitorManager;
+import io.github.brijoe.monitor.permission.FloatPermissionManager;
 import io.github.brijoe.tool.DeviceHelper;
 import io.github.brijoe.Debugger;
 import io.github.brijoe.R;
@@ -98,6 +100,16 @@ public class DHDialog extends Dialog {
                 mContext.startActivity(new Intent(mContext, BlockActivity.class));
             }
         }));
+        mList.add(new Debugger(INDEX + 6, mContext.getString(R.string.start_realtime_watch), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                mContext.startActivity(new Intent(mContext, BlockActivity.class));
+                boolean isPermission = FloatPermissionManager.getInstance().applyFloatWindow(mContext);
+                if(isPermission){
+                    MonitorManager.getInstance().addWindow(mContext);
+                }
+            }
+        }));
         //render inner items
         for (int i = 0; i < mList.size(); i++) {
             Debugger debugger = mList.get(i);
@@ -121,14 +133,14 @@ public class DHDialog extends Dialog {
             Debugger debugger = finalList.get(i);
             DHItem item = new DHItem(mContext);
             item.setText(debugger.getItemName());
-            item.setBackground(mContext.getResources().getDrawable(R.drawable.dh_item_outer_selector));
+            item.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.dh_item_outer_selector));
             item.setOnClickListener(debugger.getListener());
             //debugger have value set
             if (debugger.getIndex() == Integer.MIN_VALUE) {
                 int index = parent.getChildCount();
                 parent.addView(item, index + 1);
             } else {
-                parent.addView(item, debugger.getIndex() + INDEX + 6);
+                parent.addView(item, debugger.getIndex() + INDEX + 7);
             }
         }
 

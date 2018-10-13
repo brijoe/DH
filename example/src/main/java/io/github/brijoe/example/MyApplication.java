@@ -20,38 +20,38 @@ public class MyApplication extends Application {
 
     private void configDH(){
 
-        DH.addDebugger(new Debugger(0,"My Item0", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
-            }
-        }));
-        DH.addDebugger(new Debugger(1,"My Item1", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
-            }
-        }));
-        DH.addDebugger(new Debugger(1,"My Item1Repeat", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
-            }
-        }));
-
-        DH.addDebugger(new Debugger(2,"My Item2", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
-            }
-        }));
-
-        DH.addDebugger(new Debugger(3,"My Item3", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
-            }
-        }));
+//        DH.addDebugger(new Debugger(0,"My Item0", new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
+//            }
+//        }));
+//        DH.addDebugger(new Debugger(1,"My Item1", new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
+//            }
+//        }));
+//        DH.addDebugger(new Debugger(1,"My Item1Repeat", new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
+//            }
+//        }));
+//
+//        DH.addDebugger(new Debugger(2,"My Item2", new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
+//            }
+//        }));
+//
+//        DH.addDebugger(new Debugger(3,"My Item3", new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MyApplication.this,"you click my item",Toast.LENGTH_SHORT).show();
+//            }
+//        }));
 
     }
 }
