@@ -26,6 +26,7 @@ public class MonitorManager {
     private boolean isAdd;
 
     private StateSampler mSampler = StateSampler.getInstance();
+    private FpsCalculator mCalculator = FpsCalculator.instance();
 
 
     private Handler handler = new Handler(Looper.getMainLooper());
@@ -90,7 +91,7 @@ public class MonitorManager {
 
         mSampler.init(context, 1000);
         mSampler.start();
-        FpsCalculator.instance().start();
+        mCalculator.start();
 
 
     }
@@ -102,6 +103,8 @@ public class MonitorManager {
             isAdd = false;
             if (mSampler != null)
                 mSampler.stop();
+            if (mCalculator != null)
+                mCalculator.stop();
         }
 
     }
