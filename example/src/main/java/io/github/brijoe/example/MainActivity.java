@@ -2,13 +2,18 @@ package io.github.brijoe.example;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import io.github.brijoe.example.adapter.EmployeeAdapter;
 import io.github.brijoe.example.model.Employee;
@@ -80,13 +85,27 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    private static final String TAG = "MainActivity";
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "dispatchTouchEvent: " );
+        return super.dispatchTouchEvent(ev);
+    }
+
     private void block() {
 
-        int count=Integer.MAX_VALUE/100;
-        int  i=0;
-        while(i<count){
-            double result=Math.PI*Math.PI*Math.PI;
-            i++;
+//        int count=Integer.MAX_VALUE/100;
+//        int  i=0;
+//        while(i<count){
+//            double result=Math.PI*Math.PI*Math.PI;
+//            i++;
+//        }
+
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

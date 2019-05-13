@@ -3,6 +3,7 @@ package io.github.brijoe.block;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.os.Process;
 import android.util.Log;
 
 import java.util.List;
@@ -11,13 +12,15 @@ import io.github.brijoe.DH;
 import io.github.brijoe.bean.BlockInfo;
 import io.github.brijoe.db.BlockRepository;
 
-class LogMonitor implements BlockWatcher.BlockCallback {
+public class LogSampler extends EventAdapterCallback {
     private BlockRepository logRepository = new BlockRepository(DH.getContext());
-    private HandlerThread mLogThread = new HandlerThread("Block-log");
+    private HandlerThread mLogThread =
+            new HandlerThread("Block-log",
+                    Process.THREAD_PRIORITY_BACKGROUND);
     private Handler mLogHandler;
     private final int MSG_BLOCK_WHAT = 0x01;
 
-    private LogMonitor() {
+    private LogSampler() {
         mLogThread.start();
         mLogHandler = new Handler(mLogThread.getLooper()) {
 
@@ -31,12 +34,13 @@ class LogMonitor implements BlockWatcher.BlockCallback {
             }
         };
     }
+
     private void dumpWhenBlock(long blockTime) {
         //block occur,print main thread stack trace
         List<StackTraceElement[]> result = ThreadSampler.getInstance().getTraceInfo();
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < result.size(); i++) {
-            sb.append(">>>>>>>>>>>>>>第[" + (i+1) + "]条堆栈<<<<<<<<<<<<<<\n");
+            sb.append(">>>>>>>>>>>>>>第[" + (i + 1) + "]条堆栈<<<<<<<<<<<<<<\n");
             for (StackTraceElement s : result.get(i)) {
                 sb.append(s.toString() + "\n");
             }
@@ -56,26 +60,17 @@ class LogMonitor implements BlockWatcher.BlockCallback {
     }
 
     private static class LogMonitorHolder {
-        public static LogMonitor mInstance = new LogMonitor();
+        public static LogSampler mInstance = new LogSampler();
     }
 
-    public static LogMonitor getInstance() {
+    public static LogSampler getInstance() {
         return LogMonitorHolder.mInstance;
     }
 
 
     @Override
-    public void onFrameStart(long frameTimeNanos) {
-        //do nothing
-    }
-
-    @Override
     public void onFrameBlock(long frameDiff) {
-        Message.obtain(mLogHandler,MSG_BLOCK_WHAT,frameDiff).sendToTarget();
+        Message.obtain(mLogHandler, MSG_BLOCK_WHAT, frameDiff).sendToTarget();
     }
 
-    @Override
-    public void onFrameSmooth() {
-    //do nothing
-    }
 }

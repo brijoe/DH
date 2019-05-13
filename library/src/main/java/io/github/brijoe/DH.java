@@ -35,6 +35,8 @@ public final class DH {
 
     private static boolean mEnabled = true;
 
+    private static boolean mHasInit = false;
+
     private DH() {
     }
 
@@ -58,11 +60,15 @@ public final class DH {
     public static void install(Context context, boolean enabled) {
         if (context == null || !(context instanceof Application))
             throw new IllegalArgumentException("context must be application context");
+        if (mHasInit)
+            throw new IllegalStateException("already initialized.");
         mContext = context;
         mEnabled = enabled;
         if (enabled) {
             ((Application) context).registerActivityLifecycleCallbacks(lifecycleCallbacks);
             BlockWatcher.init();
+//            AnrFileWatcher.init();
+            mHasInit = true;
         }
 
     }

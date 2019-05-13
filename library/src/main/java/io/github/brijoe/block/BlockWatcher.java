@@ -1,70 +1,65 @@
 package io.github.brijoe.block;
 
-import android.annotation.TargetApi;
-import android.os.Build;
-import android.view.Choreographer;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-public final class BlockWatcher {
+
+public class BlockWatcher {
 
     private static final String TAG = "BlockWatcher";
 
-    private static final long TIME_BLOCK = 256;
-    private static long lastFrameTimeNanos = 0;
+    protected final long TIME_BLOCK = 256;
 
-    public interface BlockCallback {
-        void onFrameStart(long frameTimeNanos);
-        void onFrameBlock(long frameDiff);
-        void onFrameSmooth();
+    protected final int TIME_ANR = 5000;
+
+    protected final int EVENT_START = 0x01;
+    protected final int EVENT_BLOCK = 0x02;
+    protected final int EVENT_SMOOTH = 0x03;
+
+
+    protected static List<EventCallback> mBlockEventCallbacks = new ArrayList<>();
+
+    static {
+        mBlockEventCallbacks.add(ThreadSampler.getInstance());
+        mBlockEventCallbacks.add(LogSampler.getInstance());
+        mBlockEventCallbacks.add(AnrSampler.getInstance());
     }
-    private static List<BlockCallback> mBlockCallbacks =new ArrayList<>();
 
-    public static void init(){
-        mBlockCallbacks.add(ThreadSampler.getInstance());
-        mBlockCallbacks.add(LogMonitor.getInstance());
-        start();
+    private static BlockWatcher DEFAULT_WATCHER = new HandlerBlockWatcher();
+
+    public static void init() {
+        DEFAULT_WATCHER.startWatch();
     }
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private static void start() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
-            return;
-        Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
 
-            @Override
-            public void doFrame(long frameTimeNanos) {
-                Choreographer.getInstance().postFrameCallback(this);
-                for(BlockCallback callback:mBlockCallbacks)
-                    if(callback!=null) {
-                        callback.onFrameStart(frameTimeNanos);
-                    }
-                if (lastFrameTimeNanos != 0) {
-                    long diffMs = TimeUnit.MILLISECONDS.convert(
-                            frameTimeNanos - lastFrameTimeNanos, TimeUnit.NANOSECONDS);
-                    //frame callback time more than threshold
-                    if (diffMs > TIME_BLOCK) {
-                        for(BlockCallback callback:mBlockCallbacks)
-                            if(callback!=null) {
-                                callback.onFrameBlock(diffMs);
-                            }
-                    }
-                    //frame smooth
-                    else{
-                        for(BlockCallback callback:mBlockCallbacks)
-                            if(callback!=null) {
-                                callback.onFrameSmooth();
-                            }
-                    }
-                }
-                else{
 
-                }
-                lastFrameTimeNanos = frameTimeNanos;
+    protected void startWatch() {
+        throw new UnsupportedOperationException();
+    }
+
+
+    protected final void dispatchEventCallback(int event, long... time) {
+        for (EventCallback callback : mBlockEventCallbacks) {
+            switch (event) {
+                case EVENT_START:
+                    if (callback != null) {
+                        callback.onFrameStart(time[0]);
+                    }
+                    break;
+
+                case EVENT_SMOOTH:
+                    if (callback != null) {
+                        callback.onFrameSmooth();
+                    }
+                    break;
+
+                case EVENT_BLOCK:
+                    if (callback != null) {
+                        callback.onFrameBlock(time[0]);
+                    }
+                    break;
             }
-        });
+        }
     }
-
 
 }
+
