@@ -2,7 +2,6 @@ package io.github.brijoe.example;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,13 +11,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import io.github.brijoe.example.adapter.EmployeeAdapter;
 import io.github.brijoe.example.model.Employee;
 import io.github.brijoe.example.model.EmployeeList;
 import io.github.brijoe.example.network.ServiceFactory;
+import io.github.brijoe.example.parse.HttpUrlHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,7 +24,7 @@ import retrofit2.Response;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private EmployeeAdapter adapter;
-    private Button btnSend, btnBlock;
+    private Button btnSend, btnChange, btnBlock;
     private RecyclerView recyclerView;
 
     @Override
@@ -38,10 +36,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void init() {
         btnSend = (Button) findViewById(R.id.btn_send);
+        btnChange = findViewById(R.id.btn_change);
         btnBlock = findViewById(R.id.btn_block);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_employee_list);
         btnSend.setOnClickListener(this);
         btnBlock.setOnClickListener(this);
+        btnChange.setOnClickListener(this);
 
         GhostThread.start();
     }
@@ -52,11 +52,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         call.enqueue(new Callback<EmployeeList>() {
             @Override
             public void onResponse(Call<EmployeeList> call, Response<EmployeeList> response) {
-                generateEmployeeList(response.body().getEmployeeArrayList());
+                if (response != null && response.body() != null)
+                    generateEmployeeList(response.body().getEmployeeArrayList());
             }
 
             @Override
             public void onFailure(Call<EmployeeList> call, Throwable t) {
+
+                Log.e(TAG, "onFailure: " + t.getMessage());
                 Toast.makeText(MainActivity.this, "error occurred,please try again!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -66,11 +69,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     private void generateEmployeeList(ArrayList<Employee> empDataList) {
-
-        adapter = new EmployeeAdapter(empDataList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        if (empDataList != null) {
+            adapter = new EmployeeAdapter(empDataList);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     @Override
@@ -81,6 +85,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btn_block:
                 block();
+
+            case R.id.btn_change:
+                changeBaseUrl();
                 break;
         }
     }
@@ -89,7 +96,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.e(TAG, "dispatchTouchEvent: " );
+        Log.e(TAG, "dispatchTouchEvent: ");
         return super.dispatchTouchEvent(ev);
     }
 
@@ -108,6 +115,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
     }
+
+    private void changeBaseUrl() {
+        HttpUrlHelper.changeBaseUrl("http://change.navjacinth9.000webhostapp.com/json/");
+    }
+
 
     @Override
     protected void onDestroy() {
